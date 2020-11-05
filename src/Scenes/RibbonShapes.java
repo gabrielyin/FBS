@@ -64,7 +64,7 @@ public class RibbonShapes {
         }
         MINIBOX.getChildren().addAll(V1IMG);
         V1IMG[0].setOnMouseClicked((MouseEvent)->{
-            Action(0);
+//            Action(0);
         });
         
         SCROLL = new ScrollPane();
@@ -80,7 +80,8 @@ public class RibbonShapes {
         BPANE.setBackground(new Background(BCIMG));
         ENTRANCE = new Scene(BPANE,450,800,Color.BLACK);
         ENTRANCE.getStylesheets().add("Decor.css");
-
+//testing changes
+//        changes
     }
     
     public Scene getScreen(){
