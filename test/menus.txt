@@ -1,0 +1,12 @@
++Season4
+Autumn
+Winter
+Spring
+Summer
++Period2
+Matinee
+Soiree
++Meal3
+Starter
+Main
+Pudding

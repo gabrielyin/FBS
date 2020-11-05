@@ -1,0 +1,16 @@
++Names3
+Gabriel
+Rafael
+Pedro
++Food2
+Rice
+Beans
++Weather4
+Sunny
+Rainy
+Foggy
+Snow
++materials3
+wood
+plastic
+glass
