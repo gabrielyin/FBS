@@ -6,6 +6,7 @@
 
 package Scenes;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,6 +36,7 @@ public class RibbonShapes {
     Image IMG;
     BackgroundImage BCIMG;
     Button APRES,AVANT;
+    Button[] HOUSE;
     HBox[] BOXSEAT;
     HBox BOXOPTIONS,MINIBOX;
     VBox BOXES;
@@ -122,23 +124,23 @@ public class RibbonShapes {
         
         BOXSEAT = new HBox[4];
         BOXES = new VBox(2);
-//        for (int i = 0; i < 4; i++) {
-//            BOXSEAT[i] = new HBox(5);
-//            switch(i){
-//                case 0:
-//                    LineSeat(BOXSEAT[i],'A',3);
-//                    break;
-//                case 1:
-//                    LineSeat(BOXSEAT[i],'B',7);
-//                    break;
-//                case 2:
-//                    LineSeat(BOXSEAT[i],'C',7);
-//                    break;
-//                case 3:
-//                    LineSeat(BOXSEAT[i],'D',3);
-//                    break;
-//            }
-//        }
+        for (int i = 0; i < 4; i++) {
+            BOXSEAT[i] = new HBox(5);
+            switch(i){
+                case 0:
+                    LineSeat(BOXSEAT[i],'A',3);
+                    break;
+                case 1:
+                    LineSeat(BOXSEAT[i],'B',7);
+                    break;
+                case 2:
+                    LineSeat(BOXSEAT[i],'C',7);
+                    break;
+                case 3:
+                    LineSeat(BOXSEAT[i],'D',3);
+                    break;
+            }
+        }
         
         BPANE.setTop(BOXOPTIONS);
         BPANE.setCenter(BOXES);
@@ -169,6 +171,23 @@ public class RibbonShapes {
         }
 //testing changes
 //        changes
+        public void LineSeat(HBox BOXSEAT,Character LETTER,Integer NUMBER){
+            HOUSE = new Button[NUMBER];
+            for (int INDEX = 0; INDEX < NUMBER; INDEX++) {
+                HOUSE[INDEX] = new Button(LETTER+Integer.toString(INDEX));
+                HOUSE[INDEX].setGraphic(new ImageView(new Image("seat.png")));
+                HOUSE[INDEX].setOnAction((ActionEvent e) -> {
+                    System.out.println("Button pressed" + ((Button) e.getSource()).getText());
+                });
+                BOXSEAT.getChildren().add(HOUSE[INDEX]);
+                if (NUMBER > 5) {
+                    BOXSEAT.setPadding(new Insets(5,40,0,100));
+                }else{
+                    BOXSEAT.setPadding(new Insets(5,40,0,214));
+                }
+            }
+            BOXES.getChildren().add(BOXSEAT);
+        }
     
     public Scene getScreen(){
         return ENTRANCE;
