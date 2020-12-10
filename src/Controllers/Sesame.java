@@ -34,7 +34,6 @@ public class Sesame {
         try{
             TESTUSER = new UserController();
             if (TESTUSER.readUser(LOGIN.getText(), PASSWORD.getText())) {
-                MAINWINDOW.setTitle("Let us go in");
                 GRANTACCESS = true;
             }
             else{

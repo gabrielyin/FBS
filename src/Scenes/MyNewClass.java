@@ -67,11 +67,10 @@ public class MyNewClass {
     TreeDisplay TREEMEDOWN;
     PopUp POP;
     StackPane TREEDISPLAY;
+    FlightResults FLIGHTRESULTS;
     
     
     public MyNewClass(Stage MAINWINDOW,String NAMEUSER) throws IOException{
-        MAINWINDOW.setTitle("Search");
-
         IMG = new Image("background.png");
         BCIMG = new BackgroundImage(IMG,
             BackgroundRepeat.NO_REPEAT,
@@ -266,9 +265,9 @@ public class MyNewClass {
         SEARCH.setText("Search");
         SEARCH.setPrefWidth(500);
         SEARCH.setPrefHeight(40);
-        TEST = new Test(MAINWINDOW);
+        FLIGHTRESULTS = new FlightResults(MAINWINDOW);
         SEARCH.setOnAction(e->{
-            MAINWINDOW.setScene(TEST.getScreen());
+            MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
         });
        
         //hboxes and vboxes

@@ -52,9 +52,7 @@ public class Mainwindow {
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
-        
-        MAINWINDOW.setTitle("Basic Login system");
-        
+                
         TITLE = new Text();
         TITLE.setText("Basic login system");
         TITLE.setId("mytitle");
