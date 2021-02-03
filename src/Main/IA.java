@@ -1,7 +1,7 @@
 package Main;
 
 import Scenes.MyNewClass;
-import Scenes.Mainwindow;
+import Scenes.MyAccount;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.image.Image;
@@ -9,14 +9,14 @@ import javafx.stage.Stage;
 
 public class IA extends Application{
     Stage MAINWINDOW;
-    Mainwindow MAINONE;
+    MyAccount MAINONE;
     MyNewClass MAINTWO;
     
     @Override
     public void start(Stage primaryStage)throws Exception {
         MAINWINDOW = primaryStage;
         
-        MAINONE = new Mainwindow(MAINWINDOW);
+        MAINONE = new MyAccount(MAINWINDOW);
         
         MAINWINDOW.setHeight(800);
         MAINWINDOW.setWidth(1400);
