@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -56,6 +58,8 @@ public class MyNewClass {
     Label ADULTS,INFANTS; 
     Test TEST;
     String MINILINE;
+    MenuBar MENUBAR1;
+    Menu MENU1,MENU2,MENU3;
     
     MenuFiller OPTIONS;
     ChoiceBox BOXME;
@@ -78,6 +82,14 @@ public class MyNewClass {
             BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
         System.out.println("hello: "+NAMEUSER);
+        
+        MENUBAR1 = new MenuBar();
+        MENU1 = new Menu("Search Flights");
+        MENU2 = new Menu("Flight Status");
+        MENU3 = new Menu("My Account");
+        MENUBAR1.getMenus().add(MENU1);
+        MENUBAR1.getMenus().add(MENU2);
+        MENUBAR1.getMenus().add(MENU3);
         
         TREEITEM = new TreeItem<>();
         TREEITEM.setValue("MYROOT");
@@ -148,26 +160,28 @@ public class MyNewClass {
         
         BOXOPTIONS = new HBox();
 //        different dynamic menus according to user
-        switch(NAMEUSER){
-            case "Oscar":
-                OPTION3 = new MenuFillerPlus("test/menus.txt",MAINWINDOW);
-                OPTION3.BoxFiller("test/menus.txt",BOXME);
-                BOXOPTIONS.getChildren().add(OPTION3.getMenuBar());
-                OPTION3.BoxFiller2("test/headshots.txt",BOXME2);
-               break;
-            case "Billy":
-                OPTIONS = new MenuFiller("test/menus2.txt",MAINWINDOW);
-                OPTIONS.BoxFiller("test/menus2.txt",BOXME);
-                BOXOPTIONS.getChildren().add(OPTIONS.getMenuBar());
-                OPTIONS.BoxFiller2("test/headshots.txt",BOXME2);
-                break;
-            default:
-                OPTIONS = new MenuFiller("test/menus.txt",MAINWINDOW);
-                OPTIONS.BoxFiller("test/menus.txt",BOXME);
-                BOXOPTIONS.getChildren().add(OPTIONS.getMenuBar());
-                OPTIONS.BoxFiller2("test/Headshots2.txt", BOXME2);
-                break;
-        }
+//        switch(NAMEUSER){
+//            case "Oscar":
+//                OPTION3 = new MenuFillerPlus("test/menus.txt",MAINWINDOW);
+//                OPTION3.BoxFiller("test/menus.txt",BOXME);
+//                BOXOPTIONS.getChildren().add(OPTION3.getMenuBar());
+//                OPTION3.BoxFiller2("test/headshots.txt",BOXME2);
+//               break;
+//            case "Billy":
+//                OPTIONS = new MenuFiller("test/menus2.txt",MAINWINDOW);
+//                OPTIONS.BoxFiller("test/menus2.txt",BOXME);
+//                BOXOPTIONS.getChildren().add(OPTIONS.getMenuBar());
+//                OPTIONS.BoxFiller2("test/headshots.txt",BOXME2);
+//                break;
+//            default:
+//                OPTIONS = new MenuFiller("test/menus.txt",MAINWINDOW);
+//                OPTIONS.BoxFiller("test/menus.txt",BOXME);
+////                BOXOPTIONS.getChildren().add(OPTIONS.getMenuBar());
+//                OPTIONS.BoxFiller2("test/Headshots2.txt", BOXME2);
+//                break;
+//        }
+        
+        BOXOPTIONS.getChildren().addAll(MENUBAR1);
         
         FLIGHTS = new Button("Search Flights");
         FLIGHTS.setId("MENUITEMS");
@@ -296,7 +310,7 @@ public class MyNewClass {
         MAINLEFT = new VBox(15);
         MAINLEFT.setPrefWidth(500);
 //        MAINLEFT.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY,Insets.EMPTY)));
-        MAINLEFT.getChildren().addAll(TITLE,RADIOBUTTONS,DEPARTURE,DEPDATE,ADULTBOX,INFANTBOX,BOXME2);
+        MAINLEFT.getChildren().addAll(TITLE,RADIOBUTTONS,DEPARTURE,DEPDATE,ADULTBOX,INFANTBOX/*BOXME2*/);
         MAINLEFT.setPadding(new Insets(0,0,0,0));
         MAINLEFT.setAlignment(Pos.CENTER_LEFT);
         
@@ -310,9 +324,9 @@ public class MyNewClass {
         
         PANE = new BorderPane();
         PANE.setBackground(new Background(BCIMG));
-        PANE.setTop(BOXOPTIONS);
+        PANE.setTop(MENUBAR1);
         PANE.setCenter(MID);
-        PANE.setRight(RIGHTBOX);
+        //PANE.setRight(RIGHTBOX);
         
         ENTRANCE2 = new Scene(PANE,800,1400,Color.RED);
         ENTRANCE2.getStylesheets().add("Decor.css");
