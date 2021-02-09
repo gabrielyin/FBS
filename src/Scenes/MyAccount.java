@@ -41,12 +41,10 @@ public class MyAccount {
         
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
-        MYNEWCLASS = new MyNewClass(MAINWINDOW,MW.AN.getText());
         //search flight
         MENU1 = new Button("Search Flights");
         MENU1.setOnAction(e->{
             System.out.println("Search Flight Selected");
-            MAINWINDOW.setScene(MYNEWCLASS.getScreen());
         });
         //flight status
         MENU2 = new Button("Flight Status");
