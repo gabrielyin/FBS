@@ -59,7 +59,6 @@ public class MenuFiller {
     }
     
     public void BoxFiller(String FILEME, ChoiceBox POWER) throws IOException{
-        System.out.println("hello2: "); 
         try{
             READER = new Scanner (new File(FILEME));
             while(READER.hasNextLine()){
