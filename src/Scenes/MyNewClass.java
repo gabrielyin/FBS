@@ -37,8 +37,6 @@ import javafx.stage.Stage;
 public class MyNewClass {
     Image IMG;
     BackgroundImage BCIMG;
-    MenuBar MENUBAR1;
-    Menu MENU1,MENU2,MENU3; 
     Text TITLE;
     ToggleGroup TOGGLE;
     RadioButton ROUNDTRIP,ONEWAY;
@@ -49,11 +47,12 @@ public class MyNewClass {
     Integer DDAY;
     TextField DEPDATE,IN,ARRDATE,AD; 
     Label ADULTS,INFANTS;     
-    Button SEARCH;
+    Button SEARCH,MENU1,MENU2,MENU3;
     VBox MAINLEFT,MAINRIGHT;
-    HBox MID,ADULTBOX,INFANTBOX,RADIOBUTTONS;
+    HBox MID,ADULTBOX,INFANTBOX,RADIOBUTTONS,MENUBAR1;
     BorderPane PANE;
     Scene ENTRANCE;
+    MyAccount MYACCOUNT;
     
     MenuFiller OPTIONS;   
     FlightResults FLIGHTRESULTS;    
@@ -66,14 +65,22 @@ public class MyNewClass {
             BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
 
-// Menus management
-        MENUBAR1 = new MenuBar();
-        MENU1 = new Menu("Search Flights");
-        MENU2 = new Menu("Flight Status");
-        MENU3 = new Menu("My Account");
-        MENUBAR1.getMenus().add(MENU1);
-        MENUBAR1.getMenus().add(MENU2);
-        MENUBAR1.getMenus().add(MENU3);        
+// Menubar management
+        MENUBAR1 = new HBox();
+        MENUBAR1.setId("MENUBAR");
+        MYACCOUNT = new MyAccount(MAINWINDOW);
+        //search flight
+        MENU1 = new Button("Search Flights");
+        //flight status
+        MENU2 = new Button("Flight Status");
+        //account
+        MENU3 = new Button("My Account");
+        MENU3.setOnAction(e->{
+            System.out.println("My Account selected");
+            MAINWINDOW.setScene(MYACCOUNT.getScreen());
+        });
+        //adding menu items to menubar
+        MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
 
 // Title management
         TITLE = new Text();

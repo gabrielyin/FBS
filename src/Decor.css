@@ -89,3 +89,7 @@
 #enterme:focused{
     -fx-control-inner-background: orange;
 }
+
+#MENUBAR{
+    -fx-background-color: linear-gradient(#D71A21, #D71A21);
+}
