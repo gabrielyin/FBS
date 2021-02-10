@@ -32,12 +32,12 @@ public class FlightResults {
     Button MENU1,MENU2,MENU3,CONTINUE;
     ComboBox TIME,DURATION,DISTANCE;
     RadioButton NONSTOP;
-    Label CURRENTDATE;
+    Label CURRENTDATE,FLIGHT;
     ScrollPane SCROLL;
     
     MyAccount MYACCOUNT;
             
-    public FlightResults(Stage MAINWINDOW) throws IOException{
+    public FlightResults(Stage MAINWINDOW, String USER) throws IOException{
         //background logo
         IMG = new Image("background.png");
         BCIMG = new BackgroundImage(IMG,
@@ -49,7 +49,7 @@ public class FlightResults {
         //menu bar
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
-        MYACCOUNT = new MyAccount(MAINWINDOW);
+        MYACCOUNT = new MyAccount(MAINWINDOW, USER);
         //search flight
         MENU1 = new Button("Search Flights");
         //flight status
@@ -77,11 +77,17 @@ public class FlightResults {
         
         //button management
         CONTINUE = new Button("Continue");
+        CONTINUE.setOnAction(e->{
+            System.out.println("Continue");
+        });
         
         //getting current date
         DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
         LocalDateTime now = LocalDateTime.now();
         CURRENTDATE = new Label((DTF.format(now)));
+        
+        //flight results
+        
         
         //HBoxes
         BOX1 = new HBox();

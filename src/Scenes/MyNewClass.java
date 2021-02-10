@@ -57,7 +57,7 @@ public class MyNewClass {
     MenuFiller OPTIONS;   
     FlightResults FLIGHTRESULTS;    
     
-    public MyNewClass(Stage MAINWINDOW,String NAMEUSER) throws IOException{
+    public MyNewClass(Stage MAINWINDOW, String NAMEUSER) throws IOException{
         IMG = new Image("background.png");
         BCIMG = new BackgroundImage(IMG,
             BackgroundRepeat.NO_REPEAT,
@@ -68,7 +68,7 @@ public class MyNewClass {
 // Menubar management
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
-        MYACCOUNT = new MyAccount(MAINWINDOW);
+        MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
         //search flight
         MENU1 = new Button("Search Flights");
         //flight status
@@ -156,7 +156,7 @@ public class MyNewClass {
         SEARCH.setText("Search");
         SEARCH.setPrefWidth(500);
         SEARCH.setPrefHeight(40);
-        FLIGHTRESULTS = new FlightResults(MAINWINDOW);
+        FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER);
         SEARCH.setOnAction(e->{
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
         });

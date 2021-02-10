@@ -29,9 +29,9 @@ public class MyAccount {
     Text T1,T2,T3,T4;
     
     Mainwindow MW;
-    MyNewClass MYNEWCLASS;
+    MyNewClass HOME;
     
-    public MyAccount(Stage MAINWINDOW) throws IOException {
+    public MyAccount(Stage MAINWINDOW, String NAMEUSER) throws IOException {
         IMG = new Image("background.png");
         BCIMG = new BackgroundImage(IMG,
             BackgroundRepeat.NO_REPEAT,
@@ -45,7 +45,12 @@ public class MyAccount {
         MENU1 = new Button("Search Flights");
         MENU1.setOnAction(e->{
             System.out.println("Search Flight Selected");
-            MAINWINDOW.setScene(MYNEWCLASS.getScreen());
+            try{
+                HOME = new MyNewClass(MAINWINDOW, NAMEUSER); 
+                MAINWINDOW.setScene(HOME.getScreen());
+            }catch(IOException MyAccountError){
+                System.out.println("My Account doesnt reach My New Class");
+            }
         });
         //flight status
         MENU2 = new Button("Flight Status");
