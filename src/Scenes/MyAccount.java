@@ -38,13 +38,14 @@ public class MyAccount {
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
-        
+                
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
         //search flight
         MENU1 = new Button("Search Flights");
         MENU1.setOnAction(e->{
             System.out.println("Search Flight Selected");
+            MAINWINDOW.setScene(MYNEWCLASS.getScreen());
         });
         //flight status
         MENU2 = new Button("Flight Status");
