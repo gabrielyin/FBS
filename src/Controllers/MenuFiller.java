@@ -58,20 +58,27 @@ public class MenuFiller {
         }
     }
     
-    public void BoxFiller(String FILEME, ChoiceBox POWER) throws IOException{
-        try{
-            READER = new Scanner (new File(FILEME));
-            while(READER.hasNextLine()){
-                MINILINE = READER.nextLine();
-                System.out.println(MINILINE);                 
-                POWER.getItems().add(MINILINE);
+    public void BoxFiller(String FILEME, ChoiceBox POWER,Boolean YES,String ITEM) throws IOException{
+        POWER.getItems().clear();
+            try{
+                READER = new Scanner (new File(FILEME));
+                while(READER.hasNextLine()){
+                    MINILINE = READER.nextLine();
+                    if (YES){
+                        POWER.getItems().add(MINILINE);                    
+                    }
+                    else{
+                        if (!MINILINE.equals(ITEM)) {
+                            POWER.getItems().add(MINILINE);
+                        }
+                    }        
+                }
+            }
+            catch (IOException ex){
+                System.out.println("ERROR");
             }
         }
-        catch (IOException ex){
-            System.out.println("ERROR");
-        }
-    }
-    
+
     public void feedMenuItems(Scanner READER, Menu OPTIONARRAY){
         int NBR = Character.getNumericValue(LETTER);
         for (int i = 0; i < NBR; i++) {

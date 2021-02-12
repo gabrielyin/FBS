@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,16 +36,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MyNewClass {
+    String GOCITY,BACKCITY;
+    Integer CITYSELECT,DDAY;
+    Object ITEM;
+    Boolean CONDI,SELECT;
     Image IMG;
     BackgroundImage BCIMG;
     Text TITLE;
     ToggleGroup TOGGLE;
     RadioButton ROUNDTRIP,ONEWAY;
-    ChoiceBox DEPARTURE, ARRIVAL;
+    ChoiceBox DEPARTURE, ARRIVAL,CLASS;
     DatePicker GODATE,BACKDATE;
     LocalDate TODAY,LPICK;    
-    Boolean CONDI; 
-    Integer DDAY;
     TextField DEPDATE,IN,ARRDATE,AD; 
     Label ADULTS,INFANTS;     
     Button SEARCH,MENU1,MENU2,MENU3;
@@ -54,7 +57,7 @@ public class MyNewClass {
     Scene ENTRANCE;
     MyAccount MYACCOUNT;
     
-    MenuFiller OPTIONS;   
+    MenuFiller OPTIONS,OPTIONS2;   
     FlightResults FLIGHTRESULTS;    
     
     public MyNewClass(Stage MAINWINDOW, String NAMEUSER) throws IOException{
@@ -87,13 +90,22 @@ public class MyNewClass {
         TITLE.setText("Book a Flight");
         
 // Radio buttons management
+        //roud trip button
         TOGGLE = new ToggleGroup();
         ROUNDTRIP = new RadioButton();
         ROUNDTRIP.setText("Round Trip");
         ROUNDTRIP.setToggleGroup(TOGGLE);
+        ROUNDTRIP.setOnAction(e->{
+            MAINRIGHT.getChildren().add(3,BACKDATE);
+        });
+        
+        //oneway button
         ONEWAY = new RadioButton();
         ONEWAY.setText("One-Way");
-        ONEWAY.setToggleGroup(TOGGLE);        
+        ONEWAY.setToggleGroup(TOGGLE);
+        ONEWAY.setOnAction(e->{
+            MAINRIGHT.getChildren().remove(BACKDATE);
+        });
         
         RADIOBUTTONS = new HBox(30);
         RADIOBUTTONS.getChildren().addAll(ROUNDTRIP,ONEWAY);
@@ -103,18 +115,35 @@ public class MyNewClass {
         DEPARTURE = new ChoiceBox();
         DEPARTURE.setMaxWidth(500);
         DEPARTURE.setPrefHeight(40);
-        OPTIONS = new MenuFiller();
-        OPTIONS.BoxFiller("test/Destination.txt", DEPARTURE);
-        DEPARTURE.setPrefWidth(500);
-        DEPARTURE.setPrefHeight(40);
-        
         ARRIVAL = new ChoiceBox();
         ARRIVAL.setMaxWidth(500);
         ARRIVAL.setPrefHeight(40);
+        
         OPTIONS = new MenuFiller();
-        OPTIONS.BoxFiller("test/Destination.txt", ARRIVAL);
-        ARRIVAL.setPrefWidth(500);
-        ARRIVAL.setPrefHeight(40);        
+        OPTIONS.BoxFiller("test/Destination.txt", DEPARTURE,true,"");
+        DEPARTURE.setOnAction((Event event) -> {
+            CITYSELECT = DEPARTURE.getSelectionModel().getSelectedIndex();
+            ITEM = DEPARTURE.getSelectionModel().getSelectedItem();
+
+            System.out.println("Selection made: [" + CITYSELECT + "] " + ITEM);
+            System.out.println("   DEPARTURE.getValue(): " + DEPARTURE.getValue());
+            GOCITY = (String)DEPARTURE.getValue();
+            OPTIONS2 = new MenuFiller(); 
+            try {
+                OPTIONS2.BoxFiller("test/Destination.txt", ARRIVAL,false,GOCITY);
+            } catch (IOException ex) {
+                System.out.println("Error"); 
+            }
+        });         
+        
+        CLASS = new ChoiceBox();
+        CLASS.setMaxWidth(500);
+        CLASS.setPrefHeight(40);
+        CLASS.setPrefWidth(500);
+        CLASS.setPrefHeight(40);
+        CLASS.getItems().add("Economy");
+        CLASS.getItems().add("Economy Plus");
+        CLASS.getItems().add("Business");
 
 // Date fields and management        
         GODATE = new DatePicker(LocalDate.now());
@@ -125,6 +154,13 @@ public class MyNewClass {
         BACKDATE = new DatePicker();
         DPickMe();
         DPock();        
+        
+//FAKE TITLTE
+        Text TITLE2 = new Text();
+        TITLE2.setText("");
+        
+        Text TITLE3 = new Text();
+        TITLE2.setText("");
         
 // Elements to complete the scene        
         ADULTS = new Label();
@@ -161,25 +197,22 @@ public class MyNewClass {
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
         });
         
-// Building the pane
+// Building the pane                
         MAINLEFT = new VBox(15);
-        MAINLEFT.setPrefWidth(500);
         MAINLEFT.getChildren().addAll(TITLE,RADIOBUTTONS,DEPARTURE,GODATE,ADULTBOX,INFANTBOX);
-        
         MAINLEFT.setPadding(new Insets(0,0,0,0));
         MAINLEFT.setAlignment(Pos.CENTER_LEFT);
 
         MAINRIGHT = new VBox(15);
-        MAINRIGHT.setPrefWidth(500);
-        MAINRIGHT.getChildren().addAll(ARRIVAL,BACKDATE,SEARCH);
+        MAINRIGHT.getChildren().addAll(TITLE2,TITLE3,ARRIVAL,BACKDATE,CLASS,SEARCH);
         MAINRIGHT.setPadding(new Insets(0,0,0,0));
         MAINRIGHT.setAlignment(Pos.CENTER_LEFT);
 
         MID = new HBox(10);
         MID.getChildren().addAll(MAINLEFT,MAINRIGHT);
         MID.setPadding(new Insets(0,0,10,0));
-        MID.setAlignment(Pos.CENTER);        
-
+        MID.setAlignment(Pos.CENTER);   
+                
         PANE = new BorderPane();
         PANE.setBackground(new Background(BCIMG));
         PANE.setTop(MENUBAR1);
