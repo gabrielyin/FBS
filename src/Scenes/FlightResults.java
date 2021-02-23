@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -27,15 +28,15 @@ public class FlightResults {
     Scene ENTRANCE3;
     BackgroundImage BCIMG;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX2;
-    VBox MAINBOX,AIRPORTS,ECON,ECONPLUS,BUS;
+    HBox MENUBAR1,BOX1,BOX2,BOX3,BOX4,BOX5;
+    VBox MAINBOX,AIRPORTS,ECON,ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2,CONTAINER;
     Image IMG;
     Button MENU1,MENU2,MENU3,CONTINUE;
     ComboBox TIME,DURATION,DISTANCE;
     RadioButton NONSTOP;
     Label CURRENTDATE,FLIGHT,INFO1,INFO2,INFO3,INFO4;
     ScrollPane SCROLL;
-    Passengers PASSENGERS;
+    SeatMap SEATMAP;
     MyNewClass HOME;
     
     MyAccount MYACCOUNT;
@@ -76,11 +77,11 @@ public class FlightResults {
         
         //comboboxes
         TIME = new ComboBox();
-        TIME.setEditable(true);
+        TIME.setPromptText("Time");
         DURATION = new ComboBox();
-        DURATION.setEditable(true);
+        DURATION.setPromptText("Duration");
         DISTANCE = new ComboBox();
-        DISTANCE.setEditable(true);
+        DISTANCE.setPromptText("Distance");
 
         //radiobuttons
         NONSTOP = new RadioButton();
@@ -88,10 +89,10 @@ public class FlightResults {
         
         //button management
         CONTINUE = new Button("Continue");
-        PASSENGERS = new Passengers(MAINWINDOW, USER);
+        SEATMAP = new SeatMap(MAINWINDOW, USER);
         CONTINUE.setOnAction(e->{
             System.out.println("Continue");
-            MAINWINDOW.setScene(PASSENGERS.getScreen());
+            MAINWINDOW.setScene(SEATMAP.getScreen());
         });
         
         //getting current date
@@ -118,24 +119,59 @@ public class FlightResults {
         //classes results
         AIRPORTS = new VBox();
         AIRPORTS.getChildren().addAll(INFO1);
+        AIRPORTS.setMinSize(200, 500);
+        
         ECON = new VBox();
         ECON.getChildren().addAll(INFO2);
+        ECON.setMinSize(200, 100);
+
         ECONPLUS = new VBox();
         ECONPLUS.getChildren().addAll(INFO3);
+        ECONPLUS.setMinSize(200, 100);
+       
         BUS = new VBox();
         BUS.getChildren().addAll(INFO4);
+        BUS.setMinSize(200, 100);
+        
+        AIRPORTS2 = new VBox();
+        AIRPORTS2.getChildren().addAll(INFO1);
+        AIRPORTS2.setMinSize(200, 100);
+        
+        ECON2 = new VBox();
+        ECON2.getChildren().addAll(INFO2);
+        ECON2.setMinSize(200, 100);
+
+        ECONPLUS2 = new VBox();
+        ECONPLUS2.getChildren().addAll(INFO3);
+        ECONPLUS2.setMinSize(200, 100);
+       
+        BUS2 = new VBox();
+        BUS2.getChildren().addAll(INFO4);
+        BUS2.setMinSize(200, 500);
         
         //hbox box2
         BOX2 = new HBox();
+        BOX2.setSpacing(10);
         BOX2.getChildren().addAll(AIRPORTS,ECON,ECONPLUS,BUS);
+        
+        BOX3 = new HBox();
+        BOX3.setSpacing(10);
+        BOX3.getChildren().addAll(AIRPORTS2,ECON2,ECONPLUS2,BUS2);
+
+        CONTAINER = new VBox();
+        CONTAINER.getChildren().addAll(BOX2,BOX3);
 
         //scrollpane management
         SCROLL = new ScrollPane();
-        SCROLL.setContent(BOX2);
+        SCROLL.setMaxWidth(900);
+        SCROLL.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+        SCROLL.setContent(CONTAINER);
         
         //main center box
         MAINBOX = new VBox();
+        MAINBOX.setAlignment(Pos.TOP_CENTER);
         MAINBOX.getChildren().addAll(BOX1,SCROLL);
+        MAINBOX.setPadding(new Insets(0,0,10,0));
         MAINBOX.setSpacing(10);
         
         //pane management

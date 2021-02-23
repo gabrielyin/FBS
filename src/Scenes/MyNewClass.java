@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -45,7 +46,8 @@ public class MyNewClass {
     Text TITLE;
     ToggleGroup TOGGLE;
     RadioButton ROUNDTRIP,ONEWAY;
-    ChoiceBox DEPARTURE, ARRIVAL,CLASS;
+    ChoiceBox DEPARTURE, ARRIVAL;
+    ComboBox CLASS;
     DatePicker GODATE,BACKDATE;
     LocalDate TODAY,LPICK;    
     TextField DEPDATE,IN,ARRDATE,AD; 
@@ -95,6 +97,7 @@ public class MyNewClass {
         ROUNDTRIP = new RadioButton();
         ROUNDTRIP.setText("Round Trip");
         ROUNDTRIP.setToggleGroup(TOGGLE);
+        ROUNDTRIP.setDisable(true);
         ROUNDTRIP.setOnAction(e->{
             MAINRIGHT.getChildren().add(3,BACKDATE);
         });
@@ -105,6 +108,7 @@ public class MyNewClass {
         ONEWAY.setToggleGroup(TOGGLE);
         ONEWAY.setOnAction(e->{
             MAINRIGHT.getChildren().remove(BACKDATE);
+            ROUNDTRIP.setDisable(false);
         });
         
         RADIOBUTTONS = new HBox(30);
@@ -115,9 +119,11 @@ public class MyNewClass {
         DEPARTURE = new ChoiceBox();
         DEPARTURE.setMaxWidth(500);
         DEPARTURE.setPrefHeight(40);
+        DEPARTURE.setTooltip(new Tooltip("Select Departure Airport"));
         ARRIVAL = new ChoiceBox();
         ARRIVAL.setMaxWidth(500);
         ARRIVAL.setPrefHeight(40);
+        ARRIVAL.setTooltip(new Tooltip("Select Arrival Airport"));
         
         OPTIONS = new MenuFiller();
         OPTIONS.BoxFiller("test/Destination.txt", DEPARTURE,true,"");
@@ -136,11 +142,13 @@ public class MyNewClass {
             }
         });         
         
-        CLASS = new ChoiceBox();
+        CLASS = new ComboBox();
         CLASS.setMaxWidth(500);
         CLASS.setPrefHeight(40);
         CLASS.setPrefWidth(500);
         CLASS.setPrefHeight(40);
+        CLASS.setPromptText("Class");
+        CLASS.setTooltip(new Tooltip("Select Class"));
         CLASS.getItems().add("Economy");
         CLASS.getItems().add("Economy Plus");
         CLASS.getItems().add("Business");

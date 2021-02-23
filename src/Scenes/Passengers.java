@@ -70,14 +70,36 @@ public class Passengers {
         //confirmation boxes
         MAINBOX = new VBox();
         
-        PASSPORTNO = new TextField("Passport Number");
-        NAME = new TextField("Name");
-        SURNAME = new TextField("Surname");
+        //prompt passport no
+        PASSPORTNO = new TextField();
+        PASSPORTNO.setPromptText("Passport Number");
+        
+        //prompt name & surname
+        NAME = new TextField();
+        NAME.setPromptText("Name");
+        SURNAME = new TextField();
+        SURNAME.setPromptText("Surname");
+ 
+        
+        //prompt gender
+        GENDER = new ComboBox();
+        GENDER.setPromptText("Gender");
+        GENDER.getItems().addAll(
+            "Male","Female"        
+        );
+        
+        //prompt bags
+        BAGS = new ComboBox();
+        BAGS.setPromptText("Bags");
+        BAGS.getItems().addAll(
+            1,2
+        );
+        
         BOX1 = new HBox();
         BOX1.setPadding(new Insets(10,0,0,0));
         BOX1.setSpacing(10);
         BOX1.setAlignment(Pos.TOP_CENTER);
-        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME);
+        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
         
         //pane management
         PANE = new BorderPane();
