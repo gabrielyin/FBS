@@ -5,8 +5,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -17,24 +15,24 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Passengers {
+public class FlightSummary {
+    Scene ENTRANCE;
     Image IMG;
     BackgroundImage BCIMG;
-    Scene ENTRANCE;
-    BorderPane PANE;
-    HBox MENUBAR1;
-    Button MENU1,MENU2,MENU3,CONTINUE;
+    HBox MENUBAR1,BOTTOM;
+    Button MENU1,MENU2,MENU3;
     MyNewClass HOME;
     MyAccount MYACCOUNT;
-    VBox MAINBOX;
-    HBox BOX1,BOX2,BOTTOM;
-    TextField PASSPORTNO,NAME,SURNAME;
-    ComboBox GENDER,BAGS;
-    FlightSummary FLIGHTSUMMARY;
+    BorderPane PANE;
+    VBox MAINLEFT,MAINRIGHT;
+    HBox CONTAINER;
+    Text SUMMARY,FLIGHTNUM,DEP,ARR,DEPARDATE,FTIME,DIS,PLANE,SEATS,BAG,HANDBAGS,RESCODE,FINA,CLASS,PRICE,FEES;
     
-    public Passengers(Stage MAINWINDOW,String NAMEUSER) throws IOException{
+    public FlightSummary(Stage MAINWINDOW,String USER) throws IOException{
+        //background image
         IMG = new Image("background.png");
         BCIMG = new BackgroundImage(IMG,
             BackgroundRepeat.NO_REPEAT,
@@ -50,7 +48,7 @@ public class Passengers {
         MENU1.setOnAction(e->{
             System.out.println("Search Flight Selected");
             try{
-                HOME = new MyNewClass(MAINWINDOW, NAMEUSER); 
+                HOME = new MyNewClass(MAINWINDOW, USER); 
                 MAINWINDOW.setScene(HOME.getScreen());
             }catch(IOException MyAccountError){
                 System.out.println("My Account doesnt reach My New Class");
@@ -60,7 +58,7 @@ public class Passengers {
         MENU2 = new Button("Flight Status");
         //account
         MENU3 = new Button("My Account");
-        MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
+        MYACCOUNT = new MyAccount(MAINWINDOW, USER);
         MENU3.setOnAction(e->{
             System.out.println("My Account selected");
             MAINWINDOW.setScene(MYACCOUNT.getScreen());
@@ -68,52 +66,46 @@ public class Passengers {
         //adding menu items to menubar
         MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
         
-        //confirmation boxes
-        MAINBOX = new VBox();
+        //left box
+        MAINLEFT = new VBox();
+        SUMMARY = new Text("SUMMARY");
+        FLIGHTNUM = new Text("Flight Number: ");
+        DEP = new Text("Departure Airport: ");
+        ARR = new Text("Arrival Airport: ");
+        DEPARDATE = new Text("Departs: ");
+        FTIME = new Text("Flight Time: ");
+        DIS = new Text("Distance: ");
+        PLANE = new Text("Aircraft: ");
+        SEATS = new Text("Seat(s): ");
+        BAG = new Text("Bags: ");
+        HANDBAGS = new Text("Hand Baggage: ");
+        MAINLEFT.setPadding(new Insets(80,70,0,0));
+        MAINLEFT.setSpacing(20);
+        MAINLEFT.getChildren().addAll(SUMMARY,FLIGHTNUM,DEP,ARR,DEPARDATE,FTIME,DIS,PLANE,SEATS,BAG,HANDBAGS);
         
-        //prompt passport no
-        PASSPORTNO = new TextField();
-        PASSPORTNO.setPromptText("Passport Number");
+        //right box
+        MAINRIGHT = new VBox();
+        RESCODE = new Text("Reservation Code: ");
+        FINA = new Text("FINANCIAL SUMMARY");
+        CLASS = new Text("Class: ");
+        PRICE = new Text("Ticket Price: ");
+        FEES = new Text("Fees & Costs: ");
+        MAINRIGHT.setPadding(new Insets(80,0,0,70));
+        MAINRIGHT.setSpacing(20);
+        MAINRIGHT.getChildren().addAll(RESCODE,FINA,CLASS,PRICE,FEES);
         
-        //prompt name & surname
-        NAME = new TextField();
-        NAME.setPromptText("Name");
-        SURNAME = new TextField();
-        SURNAME.setPromptText("Surname");
- 
+        //main container
+        CONTAINER = new HBox();
+        CONTAINER.setAlignment(Pos.CENTER);
+        CONTAINER.getChildren().addAll(MAINLEFT,MAINRIGHT);
         
-        //prompt gender
-        GENDER = new ComboBox();
-        GENDER.setPromptText("Gender");
-        GENDER.getItems().addAll(
-            "Male","Female"        
-        );
-        
-        //prompt bags
-        BAGS = new ComboBox();
-        BAGS.setPromptText("Bags");
-        BAGS.getItems().addAll(
-            1,2
-        );
-        
-        //first box
-        BOX1 = new HBox();
-        BOX1.setPadding(new Insets(10,0,0,0));
-        BOX1.setSpacing(10);
-        BOX1.setAlignment(Pos.TOP_CENTER);
-        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
-        
-        //adding elements to mainbox
-        MAINBOX.getChildren().addAll(BOX1);
-        
-        //bottom part of scene
-        CONTINUE = new Button("Continue");
-        FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, NAMEUSER);
+        //continue button & price
+        Button CONTINUE = new Button("Continue");
         CONTINUE.setOnAction(e->{
-            MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
+          
         });
         
-        //adding button to bottom hbox
+        //bottom hbox
         BOTTOM = new HBox();
         BOTTOM.setAlignment(Pos.BASELINE_RIGHT);
         BOTTOM.setPadding(new Insets(0,60,30,0));
@@ -123,7 +115,7 @@ public class Passengers {
         PANE = new BorderPane();
         PANE.setBackground(new Background(BCIMG));
         PANE.setTop(MENUBAR1);
-        PANE.setCenter(MAINBOX);
+        PANE.setCenter(CONTAINER);
         PANE.setBottom(BOTTOM);
         
         ENTRANCE = new Scene(PANE,800,1400,Color.RED);
