@@ -1,6 +1,7 @@
 package Scenes;
 
 import java.io.IOException;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,7 +27,7 @@ public class MyAccount {
     MyAccount MYACCOUNT;
     Button MENU1,MENU2,MENU3;
     VBox MAIN;
-    Text T1,T2,T3,T4;
+    Text T1,T2,T3,T4,T5,T6,T7,T8;
     
     Mainwindow MW;
     MyNewClass HOME;
@@ -68,9 +69,26 @@ public class MyAccount {
         T3 = new Text();
         T3.setText("Surname: ");
         
-        MAIN = new VBox(2);
-        MAIN.setAlignment(Pos.CENTER);
-        MAIN.getChildren().addAll(T1,T2,T3);
+        T4 = new Text();
+        T4.setText("Email: ");
+        
+        T5 = new Text();
+        T5.setText("Password: ");
+        
+        T6= new Text();
+        T6.setText("Phone Number: ");
+        
+        T7 = new Text();
+        T7.setText("Miles Flown: ");
+        
+        T8 = new Text();
+        T8.setText("Loyalty Status: ");
+        
+        MAIN = new VBox();
+        MAIN.setSpacing(30);
+        MAIN.setPadding(new Insets(0,100,0,100));
+        MAIN.setAlignment(Pos.CENTER_LEFT);
+        MAIN.getChildren().addAll(T1,T2,T3,T4,T5,T6,T7,T8);
 
         
         PANE = new BorderPane();
