@@ -3,6 +3,7 @@ package Scenes;
 import java.io.IOException;
 import java.time.LocalDate;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -12,12 +13,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -116,7 +120,7 @@ public class FlightStatus {
         //flight results
         FLIGHTRESULTS = new VBox();
         HBox INFO1 = new HBox();
-        HBox INFO2 = new HBox();
+        VBox INFO2 = new VBox();
         
         AIRPORT = new Text();
         AIRPORT.setText("GIG-LAX");
@@ -126,6 +130,9 @@ public class FlightStatus {
         STATUS.setText("On Time");
         
         INFO1.setSpacing(40);
+        INFO1.setMinSize(1250 , 40);
+        INFO1.setPadding(new Insets(0,20,0,20));
+        INFO1.setAlignment(Pos.CENTER_LEFT);
         INFO1.getChildren().addAll(AIRPORT,FLIGHTNUM,STATUS);
         
         DEPAR = new Text();
@@ -133,13 +140,14 @@ public class FlightStatus {
         ARRAR = new Text();
         ARRAR.setText("Los Angeles Interational Airport");
         DEPTIME = new Text();
-        DEPTIME.setText("departure date");
+        DEPTIME.setText("Departure date");
         ARRTIME = new Text();
-        ARRTIME.setText("arrival date");
+        ARRTIME.setText("Arrival date");
         
-        INFO2.setSpacing(40);
+        INFO2.setSpacing(10);
+        INFO2.setMinWidth(1250);
+        INFO2.setPadding(new Insets(0,20,0,20));
         INFO2.getChildren().addAll(DEPAR,ARRAR,DEPTIME,ARRTIME);
-        FLIGHTRESULTS.setSpacing(20);
         FLIGHTRESULTS.getChildren().addAll(INFO1,INFO2);
         
         //scrollPane
@@ -166,7 +174,7 @@ public class FlightStatus {
         SCROLLCONTAINER.getChildren().addAll(SCROLL);
         
         //main container
-        MAINCONTAINER = new VBox();
+        MAINCONTAINER = new VBox(30);
         MAINCONTAINER.setPadding(new Insets(50,50,50,50));
         MAINCONTAINER.getChildren().addAll(TOPCONTAINER,SCROLLCONTAINER);
         
