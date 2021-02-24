@@ -153,6 +153,7 @@ public class FlightStatus {
         //scrollPane
         SCROLL = new ScrollPane();
         SCROLL.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        SCROLL.setMinHeight(500);
         SCROLL.setContent(FLIGHTRESULTS);
         
         //first hbox

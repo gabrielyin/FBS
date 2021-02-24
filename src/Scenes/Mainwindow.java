@@ -52,11 +52,6 @@ public class Mainwindow {
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,
             BackgroundSize.DEFAULT);
-                
-        TITLE = new Text();
-        TITLE.setText("Basic login system");
-        TITLE.setId("mytitle");
-        TITLE.setEffect(new GaussianBlur());
         
         //components management
         TITLE2 = new Text();
@@ -166,11 +161,6 @@ public class Mainwindow {
             MID.getChildren().addAll(TITLE3,STAFFID,SID,PASSWORD,PS);
         });
         
-        TOP = new HBox();
-        TOP.getChildren().add(TITLE);
-        TOP.setPadding(new Insets(0,0,0,0));
-        TOP.setAlignment(Pos.TOP_CENTER);
-        
         BOTTOM = new HBox(20);
         BOTTOM.getChildren().addAll(LOGINUP,SIGNUPB,QUIT);
         BOTTOM.setPadding(new Insets(0,0,0,0));
@@ -187,7 +177,6 @@ public class Mainwindow {
         MID.setPadding(new Insets(0,0,0,0));
         
         PANE = new BorderPane();
-        PANE.setTop(TOP);
         PANE.setCenter(MID);
         PANE.setBottom(TEST);
         PANE.setBackground(new Background(BCIMG));
