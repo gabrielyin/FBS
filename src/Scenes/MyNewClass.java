@@ -58,6 +58,7 @@ public class MyNewClass {
     BorderPane PANE;
     Scene ENTRANCE;
     MyAccount MYACCOUNT;
+    FlightStatus FLIGHTSTATUS;
     
     MenuFiller OPTIONS,OPTIONS2;   
     FlightResults FLIGHTRESULTS;    
@@ -74,14 +75,17 @@ public class MyNewClass {
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
         MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
+        FLIGHTSTATUS = new FlightStatus(MAINWINDOW, NAMEUSER);
         //search flight
         MENU1 = new Button("Search Flights");
         //flight status
         MENU2 = new Button("Flight Status");
+        MENU2.setOnAction(e->{
+            MAINWINDOW.setScene(FLIGHTSTATUS.getScreen());
+        });
         //account
         MENU3 = new Button("My Account");
         MENU3.setOnAction(e->{
-            System.out.println("My Account selected");
             MAINWINDOW.setScene(MYACCOUNT.getScreen());
         });
         //adding menu items to menubar
@@ -146,7 +150,6 @@ public class MyNewClass {
         CLASS.setMaxWidth(500);
         CLASS.setPrefHeight(40);
         CLASS.setPrefWidth(500);
-        CLASS.setPrefHeight(40);
         CLASS.setPromptText("Class");
         CLASS.setTooltip(new Tooltip("Select Class"));
         CLASS.getItems().add("Economy");
