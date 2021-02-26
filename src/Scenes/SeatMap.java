@@ -16,8 +16,10 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,13 +28,15 @@ public class SeatMap {
     BackgroundImage BCIMG;
     Scene ENTRANCE;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX2,BOX3,SEATMAP;
+    HBox MENUBAR1,BOX1,BOX2,BOX3,HBOX1;
     VBox CONTAINER;
     MyAccount MYACCOUNT;
     Button MENU1,MENU2,MENU3,CONTINUE;
     Text FLIGHTNUM,FLIGHT,PLANE,SM,SELECTED;
     Label BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED;
     Passengers PASSENGER;
+    Rectangle SEATS;
+    StackPane STACK;
     
     public SeatMap(Stage MAINWINDOW, String USER) throws IOException{
         //background image    
@@ -97,10 +101,21 @@ public class SeatMap {
         BOX2.getChildren().addAll(SM,BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED);
         
         //seat map
-        SEATMAP = new HBox();
-        SEATMAP.setBackground(new Background(new BackgroundFill(Color.BLACK,CornerRadii.EMPTY,Insets.EMPTY)));
-        SEATMAP.setMinSize(1000, 580);
+        HBOX1 = new HBox();
         
+        //rectangle
+        SEATS = new Rectangle();
+        SEATS.setHeight(10);
+        SEATS.setWidth(10); 
+//      SEATMAP.setBackground(new Background(new BackgroundFill(Color.BLACK,CornerRadii.EMPTY,Insets.EMPTY)));
+        //adding seats to hbox
+        HBOX1.setMinSize(1000, 580);
+        HBOX1.getChildren().addAll(SEATS);
+        
+        //adding hbox1 to vbox1
+        VBox VBOX1 = new VBox();
+        VBOX1.getChildren().addAll(HBOX1);
+
         //third hbox
         BOX3 = new HBox();
         
@@ -120,7 +135,7 @@ public class SeatMap {
         
         //main container
         CONTAINER = new VBox();
-        CONTAINER.getChildren().addAll(BOX1,BOX2,SEATMAP,BOX3);
+        CONTAINER.getChildren().addAll(BOX1,BOX2/*add seat map here*/,BOX3);
         
         //pane management
         PANE = new BorderPane();
