@@ -1,9 +1,14 @@
 package Scenes;
 
 import Controllers.MenuFiller;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -16,8 +21,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -59,6 +62,8 @@ public class MyNewClass {
     Scene ENTRANCE;
     MyAccount MYACCOUNT;
     FlightStatus FLIGHTSTATUS;
+    String VAR1,VAR2,VAR3,VAR4;
+    PrintWriter PAXINFO;
     
     MenuFiller OPTIONS,OPTIONS2;   
     FlightResults FLIGHTRESULTS;    
@@ -205,7 +210,19 @@ public class MyNewClass {
         SEARCH.setPrefHeight(40);
         FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER);
         SEARCH.setOnAction(e->{
+            try{
+            //storing departure and arrival airoprt in variabel
+            VAR1 = (String) DEPARTURE.getSelectionModel().getSelectedItem();
+            VAR2 = (String) ARRIVAL.getSelectionModel().getSelectedItem();
+            //adding dates to variable
+            VAR3 = GODATE.getValue().toString();
+            VAR4 = BACKDATE.getValue().toString();
+            //adding these variables to txt file
+            MyTrip(VAR1,VAR2,VAR3,VAR4);
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
+            } catch (IOException ex){
+                System.out.println("PROBLBEMS");
+            }
         });
         
 // Building the pane                
@@ -295,6 +312,12 @@ public class MyNewClass {
             }   
         });                
     } 
+    
+    public void MyTrip(String VAR1,String VAR2,String VAR3,String VAR4) throws IOException {
+            PAXINFO = new PrintWriter(new FileWriter("test/paxinfo.txt",true));
+            PAXINFO.write(VAR1+","+VAR2+","+VAR3+","+VAR4+"\n");
+            PAXINFO.close();
+    }
     
     public Scene getScreen(){
         return ENTRANCE;

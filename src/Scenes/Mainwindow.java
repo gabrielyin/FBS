@@ -2,6 +2,8 @@ package Scenes;
 
 import Controllers.RecordMe;
 import Controllers.Sesame;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -40,6 +41,7 @@ public class Mainwindow {
     VBox MID,TEST;
     BorderPane PANE;
     Scene ENTRANCE;
+    FileWriter PAXINFO;
 
     Sesame HEYHO,HEYHO2;
     MyNewClass HOME;
@@ -116,9 +118,10 @@ public class Mainwindow {
             try{
                 HEYHO = new Sesame();
                 if (HEYHO.sesame(MAINWINDOW,AN,PS)) {
-                    NAMEUSER = AN.getText();
+                    NAMEUSER = AN.getText();                 
                     AN.clear();
                     PS.clear();
+                    
                     HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
                     MAINWINDOW.setScene(HOME.getScreen());
                 }

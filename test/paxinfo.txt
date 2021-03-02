@@ -1,0 +1,3 @@
+Lisbon,Rio de Janeiro,2021-03-05,2021-03-25
+Paris,Rio de Janeiro,2021-03-11,2021-03-25
+London,Rio de Janeiro,2021-03-06,2021-03-26
