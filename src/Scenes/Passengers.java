@@ -1,5 +1,7 @@
 package Scenes;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,9 +32,14 @@ public class Passengers {
     MyAccount MYACCOUNT;
     VBox MAINBOX;
     HBox BOX1,BOX2,BOTTOM;
+    HBox[] BOXARRAY;
     TextField PASSPORTNO,NAME,SURNAME;
     ComboBox GENDER,BAGS;
     FlightSummary FLIGHTSUMMARY;
+    Integer COUNTER,PAXNUM;
+    BufferedReader PAXINFO;
+    String CURRENTLINE,LASTLINE;
+    String[] FILEDATA;
     
     public Passengers(Stage MAINWINDOW,String NAMEUSER) throws IOException{
         IMG = new Image("background.png");
@@ -97,14 +104,55 @@ public class Passengers {
         );
         
         //first box
-        BOX1 = new HBox();
-        BOX1.setPadding(new Insets(10,0,0,0));
-        BOX1.setSpacing(10);
-        BOX1.setAlignment(Pos.TOP_CENTER);
-        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
+//        BOX1 = new HBox();
+//        BOX1.setPadding(new Insets(10,0,0,0));
+//        BOX1.setSpacing(10);
+//        BOX1.setAlignment(Pos.TOP_CENTER);
+//        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
+        PAXNUM = 5;
         
-        //adding elements to mainbox
-        MAINBOX.getChildren().addAll(BOX1);
+        PAXINFO = new BufferedReader(new FileReader("test/paxinfo.txt"));
+        
+        while((CURRENTLINE = PAXINFO.readLine()) != null){
+            FILEDATA = CURRENTLINE.split(",");
+            System.out.println(FILEDATA[0]);
+        }
+     
+        BOXARRAY = new HBox[10];
+        
+        for (int i = 0; i < PAXNUM; i++) {
+            BOX1 = new HBox();
+            BOX1.setPadding(new Insets(10,0,0,0));
+            BOX1.setSpacing(10);
+            BOX1.setAlignment(Pos.TOP_CENTER);
+             //prompt passport no
+            PASSPORTNO = new TextField();
+            PASSPORTNO.setPromptText("Passport Number");
+        
+            //prompt name & surname
+            NAME = new TextField();
+            NAME.setPromptText("Name");
+            SURNAME = new TextField();
+            SURNAME.setPromptText("Surname");
+
+        
+            //prompt gender
+            GENDER = new ComboBox();
+            GENDER.setPromptText("Gender");
+            GENDER.getItems().addAll(
+                "Male","Female"        
+            );
+        
+            //prompt bags
+            BAGS = new ComboBox();
+            BAGS.setPromptText("Bags");
+            BAGS.getItems().addAll(
+                1,2
+            );
+            BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
+            BOXARRAY[i] = BOX1;
+            MAINBOX.getChildren().addAll(BOXARRAY[i]);
+            }
         
         //bottom part of scene
         CONTINUE = new Button("Continue");

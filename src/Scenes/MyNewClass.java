@@ -1,14 +1,11 @@
 package Scenes;
 
 import Controllers.MenuFiller;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -62,8 +59,9 @@ public class MyNewClass {
     Scene ENTRANCE;
     MyAccount MYACCOUNT;
     FlightStatus FLIGHTSTATUS;
-    String VAR1,VAR2,VAR3,VAR4;
+    String VAR1,VAR2,VAR3,VAR4,VAR6;
     PrintWriter PAXINFO;
+    Integer VAR5;
     
     MenuFiller OPTIONS,OPTIONS2;   
     FlightResults FLIGHTRESULTS;    
@@ -217,8 +215,12 @@ public class MyNewClass {
             //adding dates to variable
             VAR3 = GODATE.getValue().toString();
             VAR4 = BACKDATE.getValue().toString();
+            //getting number of passengers
+            VAR5 = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
+            //getting class
+            VAR6 = (String) CLASS.getSelectionModel().getSelectedItem();
             //adding these variables to txt file
-            MyTrip(VAR1,VAR2,VAR3,VAR4);
+            MyTrip(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6);
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
             } catch (IOException ex){
                 System.out.println("PROBLBEMS");
@@ -313,9 +315,9 @@ public class MyNewClass {
         });                
     } 
     
-    public void MyTrip(String VAR1,String VAR2,String VAR3,String VAR4) throws IOException {
+    public void MyTrip(String VAR1,String VAR2,String VAR3,String VAR4,Integer VAR5,String VAR6) throws IOException {
             PAXINFO = new PrintWriter(new FileWriter("test/paxinfo.txt",true));
-            PAXINFO.write(VAR1+","+VAR2+","+VAR3+","+VAR4+"\n");
+            PAXINFO.write(VAR1+","+VAR2+","+VAR3+","+VAR4+","+VAR5+","+VAR6+"\n");
             PAXINFO.close();
     }
     
