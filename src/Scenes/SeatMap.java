@@ -124,6 +124,7 @@ public class SeatMap {
         
         CONTINUE = new Button("Continue");
         PASSENGER = new Passengers(MAINWINDOW, USER);
+        System.out.println("read done");
         CONTINUE.setOnAction(e->{
             MAINWINDOW.setScene(PASSENGER.getScreen());
         });

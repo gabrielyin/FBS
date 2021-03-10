@@ -227,12 +227,16 @@ public class MyNewClass {
             PAXCONTENT[2] = GODATE.getValue().toString();
             PAXCONTENT[3] = BACKDATE.getValue().toString();
             //getting number of passengers
-            PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
+            //PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
             PAXCONTENT[4] = String.valueOf(Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText()));
             //getting class
             PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
             //adding these variables to txt file
             MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
+            
+            Passengers passengers = new Passengers(MAINWINDOW,NAMEUSER);
+            passengers.readStuff();
+            
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
             } catch (IOException ex){
                 System.out.println("PROBLBEMS");

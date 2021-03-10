@@ -2,8 +2,12 @@ package Scenes;
 
 import Modules.Pax;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -44,6 +48,7 @@ public class Passengers {
     String[] FILEDATA;
     Pax PAX;
     MyNewClass MYNEWCLASS;
+    private Scanner FILE;
     
     public Passengers(Stage MAINWINDOW,String NAMEUSER) throws IOException{
         IMG = new Image("background.png");
@@ -106,17 +111,13 @@ public class Passengers {
         BAGS.getItems().addAll(
             1,2
         );
+      
+        // read stuff
+          
+        System.out.println("Last line " + FILE);
+        BOXARRAY = new HBox[10];
         
-        PAXINFO = new FileReader("test/paxinfo.txt");
-        BUFFEREDREADER = new BufferedReader(PAXINFO);
-        while((FILECONTENT = BUFFEREDREADER.readLine()) != null){
-            FILEDATA = FILECONTENT.split(",");
-            PAXNUM = Integer.valueOf(FILEDATA[4]);
-            System.out.println(FILEDATA[4]);
-        }
-        BOXARRAY = new HBox[10];   
-        
-        for (int i = 0; i < PAXNUM; i++) {
+        for (int i = 0; i < readStuff(); i++) {
             BOX1 = new HBox();
             BOX1.setPadding(new Insets(10,0,0,0));
             BOX1.setSpacing(10);
@@ -148,7 +149,7 @@ public class Passengers {
             BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
             BOXARRAY[i] = BOX1;
             MAINBOX.getChildren().addAll(BOXARRAY[i]);
-            }
+        }
         
         //bottom part of scene
         CONTINUE = new Button("Continue");
@@ -175,5 +176,20 @@ public class Passengers {
     }
     public Scene getScreen(){
         return ENTRANCE;
+    }
+    
+    public int readStuff(){
+        try {
+            PAXINFO = new FileReader("test/paxinfo.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Passengers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FILE = new Scanner(PAXINFO);
+        while(FILE.hasNext()){
+            FILEDATA = FILE.nextLine().split(",");
+            System.out.println(FILEDATA[4]);
+        }
+        
+        return PAXNUM = Integer.valueOf(FILEDATA[4]);
     }
 }
