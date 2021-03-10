@@ -14,3 +14,6 @@ Paris,Lisbon,2021-03-09,2021-03-24,5,Economy
 Rio de Janeiro,Paris,2021-03-04,2021-03-12,3,Economy
 Rio de Janeiro,Lisbon,2021-03-04,2021-03-18,3,Business
 Rio de Janeiro,Paris,2021-03-04,2021-03-17,3,Economy Plus
+Paris,Lisbon,2021-03-10,2021-03-18,7,Economy
+Lisbon,Paris,2021-03-16,2021-03-24,3,Business
+Paris,London,2021-03-17,2021-03-25,6,Economy

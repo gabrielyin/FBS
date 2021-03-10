@@ -1,6 +1,9 @@
 package Scenes;
 
 import Controllers.MenuFiller;
+import Scenes.Passengers;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,7 +40,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MyNewClass {
-    String GOCITY,BACKCITY;
+    String GOCITY,BACKCITY,FILECONTENT;
     Integer CITYSELECT,DDAY;
     Object ITEM;
     Boolean CONDI,SELECT;
@@ -60,11 +63,17 @@ public class MyNewClass {
     MyAccount MYACCOUNT;
     FlightStatus FLIGHTSTATUS;
     String VAR1,VAR2,VAR3,VAR4,VAR6;
-    PrintWriter PAXINFO;
-    Integer VAR5;
+    PrintWriter PAXINFO2;
+    FileReader PAXINFO;
+    String[] PAXCONTENT,FILEDATA;
+    Integer VAR5,PAXNUM;
+    Passengers PASSENGERS;
+    FileReader READ;
+    BufferedReader BUFFEREDREADER;
     
     MenuFiller OPTIONS,OPTIONS2;   
     FlightResults FLIGHTRESULTS;    
+    boolean CHECKER;
     
     public MyNewClass(Stage MAINWINDOW, String NAMEUSER) throws IOException{
         IMG = new Image("background.png");
@@ -209,18 +218,21 @@ public class MyNewClass {
         FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER);
         SEARCH.setOnAction(e->{
             try{
+            //
+            PAXCONTENT = new String[6];
             //storing departure and arrival airoprt in variabel
-            VAR1 = (String) DEPARTURE.getSelectionModel().getSelectedItem();
-            VAR2 = (String) ARRIVAL.getSelectionModel().getSelectedItem();
+            PAXCONTENT[0] = (String) DEPARTURE.getSelectionModel().getSelectedItem();
+            PAXCONTENT[1] = (String) ARRIVAL.getSelectionModel().getSelectedItem();
             //adding dates to variable
-            VAR3 = GODATE.getValue().toString();
-            VAR4 = BACKDATE.getValue().toString();
+            PAXCONTENT[2] = GODATE.getValue().toString();
+            PAXCONTENT[3] = BACKDATE.getValue().toString();
             //getting number of passengers
-            VAR5 = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
+            PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
+            PAXCONTENT[4] = String.valueOf(Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText()));
             //getting class
-            VAR6 = (String) CLASS.getSelectionModel().getSelectedItem();
+            PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
             //adding these variables to txt file
-            MyTrip(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6);
+            MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
             MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
             } catch (IOException ex){
                 System.out.println("PROBLBEMS");
@@ -315,10 +327,10 @@ public class MyNewClass {
         });                
     } 
     
-    public void MyTrip(String VAR1,String VAR2,String VAR3,String VAR4,Integer VAR5,String VAR6) throws IOException {
-            PAXINFO = new PrintWriter(new FileWriter("test/paxinfo.txt",true));
-            PAXINFO.write(VAR1+","+VAR2+","+VAR3+","+VAR4+","+VAR5+","+VAR6+"\n");
-            PAXINFO.close();
+    public void MyTrip(String VAR1,String VAR2,String VAR3,String VAR4,String VAR5,String VAR6) throws IOException {
+            PAXINFO2 = new PrintWriter(new FileWriter("test/paxinfo.txt",true));
+            PAXINFO2.write(VAR1+","+VAR2+","+VAR3+","+VAR4+","+VAR5+","+VAR6+"\n");
+            PAXINFO2.close();
     }
     
     public Scene getScreen(){

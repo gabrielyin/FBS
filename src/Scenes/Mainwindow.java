@@ -2,7 +2,6 @@ package Scenes;
 
 import Controllers.RecordMe;
 import Controllers.Sesame;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javafx.geometry.Insets;

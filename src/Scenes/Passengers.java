@@ -1,5 +1,6 @@
 package Scenes;
 
+import Modules.Pax;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,9 +38,12 @@ public class Passengers {
     ComboBox GENDER,BAGS;
     FlightSummary FLIGHTSUMMARY;
     Integer COUNTER,PAXNUM;
-    BufferedReader PAXINFO;
-    String CURRENTLINE,LASTLINE;
+    FileReader PAXINFO;
+    String FILECONTENT;
+    BufferedReader BUFFEREDREADER;
     String[] FILEDATA;
+    Pax PAX;
+    MyNewClass MYNEWCLASS;
     
     public Passengers(Stage MAINWINDOW,String NAMEUSER) throws IOException{
         IMG = new Image("background.png");
@@ -103,22 +107,14 @@ public class Passengers {
             1,2
         );
         
-        //first box
-//        BOX1 = new HBox();
-//        BOX1.setPadding(new Insets(10,0,0,0));
-//        BOX1.setSpacing(10);
-//        BOX1.setAlignment(Pos.TOP_CENTER);
-//        BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
-        PAXNUM = 5;
-        
-        PAXINFO = new BufferedReader(new FileReader("test/paxinfo.txt"));
-        
-        while((CURRENTLINE = PAXINFO.readLine()) != null){
-            FILEDATA = CURRENTLINE.split(",");
-            System.out.println(FILEDATA[0]);
+        PAXINFO = new FileReader("test/paxinfo.txt");
+        BUFFEREDREADER = new BufferedReader(PAXINFO);
+        while((FILECONTENT = BUFFEREDREADER.readLine()) != null){
+            FILEDATA = FILECONTENT.split(",");
+            PAXNUM = Integer.valueOf(FILEDATA[4]);
+            System.out.println(FILEDATA[4]);
         }
-     
-        BOXARRAY = new HBox[10];
+        BOXARRAY = new HBox[10];   
         
         for (int i = 0; i < PAXNUM; i++) {
             BOX1 = new HBox();
