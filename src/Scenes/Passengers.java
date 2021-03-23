@@ -118,6 +118,7 @@ public class Passengers {
         BOXARRAY = new HBox[10];
         
         for (int i = 0; i < readStuff(); i++) {
+            System.out.println("gabriel to triste " + readStuff());
             BOX1 = new HBox();
             BOX1.setPadding(new Insets(10,0,0,0));
             BOX1.setSpacing(10);
@@ -185,11 +186,14 @@ public class Passengers {
             Logger.getLogger(Passengers.class.getName()).log(Level.SEVERE, null, ex);
         }
         FILE = new Scanner(PAXINFO);
+        int last = 0;
         while(FILE.hasNext()){
             FILEDATA = FILE.nextLine().split(",");
-            System.out.println(FILEDATA[4]);
+            System.out.println("olha ele: " + FILEDATA[4]);
+            last = Integer.valueOf(FILEDATA[4]);
         }
+        System.out.println("last is " + last);
         
-        return PAXNUM = Integer.valueOf(FILEDATA[4]);
+        return last;
     }
 }

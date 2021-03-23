@@ -14,13 +14,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -31,7 +29,8 @@ public class FlightResults {
     BackgroundImage BCIMG;
     BorderPane PANE;
     HBox MENUBAR1,BOX1,BOX2,BOX3,BOX4,BOX5;
-    VBox MAINBOX,AIRPORTS,ECON,ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2,CONTAINER;
+    VBox MAINBOX,AIRPORTS,ECON,ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2;
+    HBox[] CONTAINER;
     Image IMG;
     Button MENU1,MENU2,MENU3,CONTINUE;
     ComboBox TIME,DURATION,DISTANCE;
@@ -112,62 +111,54 @@ public class FlightResults {
         BOX1.setSpacing(30);
         BOX1.setAlignment(Pos.TOP_CENTER);
         
-        //box2 information
-        INFO1 = new Label("GIG-LAX");
-        INFO2 = new Label("Price economy");
-        INFO3 = new Label("Price economy plus");
-        INFO4 = new Label("Price business");
+//        //box2 information
+//        INFO1 = new Label("GIG-LAX");
+//        INFO2 = new Label("Price economy");
+//        INFO3 = new Label("Price economy plus");
+//        INFO4 = new Label("Price business");
         
-        //classes results
-        AIRPORTS = new VBox();
-        AIRPORTS.getChildren().addAll(INFO1);
-        AIRPORTS.setMinSize(200, 500);
-        
-        ECON = new VBox();
-        ECON.getChildren().addAll(INFO2);
-        ECON.setMinSize(200, 100);
-
-        ECONPLUS = new VBox();
-        ECONPLUS.getChildren().addAll(INFO3);
-        ECONPLUS.setMinSize(200, 100);
-       
-        BUS = new VBox();
-        BUS.getChildren().addAll(INFO4);
-        BUS.setMinSize(200, 100);
-        
-        AIRPORTS2 = new VBox();
-        AIRPORTS2.getChildren().addAll(INFO1);
-        AIRPORTS2.setMinSize(200, 100);
-        
-        ECON2 = new VBox();
-        ECON2.getChildren().addAll(INFO2);
-        ECON2.setMinSize(200, 100);
-
-        ECONPLUS2 = new VBox();
-        ECONPLUS2.getChildren().addAll(INFO3);
-        ECONPLUS2.setMinSize(200, 100);
-       
-        BUS2 = new VBox();
-        BUS2.getChildren().addAll(INFO4);
-        BUS2.setMinSize(200, 500);
-        
-        //hbox box2
-        BOX2 = new HBox();
-        BOX2.setSpacing(10);       
-        BOX2.getChildren().addAll(AIRPORTS,ECON,ECONPLUS,BUS);
-        
-        BOX3 = new HBox();
-        BOX3.setSpacing(10);
-        BOX3.getChildren().addAll(AIRPORTS2,ECON2,ECONPLUS2,BUS2);
-
-        CONTAINER = new VBox();
-        CONTAINER.getChildren().addAll(BOX2,BOX3);
-
-        //scrollpane management
+        //scrollpane
         SCROLL = new ScrollPane();
         SCROLL.setMaxWidth(900);
         SCROLL.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        SCROLL.setContent(CONTAINER);
+        
+        CONTAINER = new HBox[10];
+        
+        //classes results
+        for (int i = 0; i < 8; i++){
+            BOX2 = new HBox();
+            BOX2.setSpacing(10);
+            
+            //box2 information
+            INFO1 = new Label("GIG-LAX");
+            INFO2 = new Label("Price economy");
+            INFO3 = new Label("Price economy plus");
+            INFO4 = new Label("Price business");
+            
+            AIRPORTS = new VBox();
+            AIRPORTS.getChildren().addAll(INFO1);
+//            AIRPORTS.setMinSize(200, 500);
+
+            ECON = new VBox();
+            ECON.getChildren().addAll(INFO2);
+//            ECON.setMinSize(200, 100);
+
+            ECONPLUS = new VBox();
+            ECONPLUS.getChildren().addAll(INFO3);
+//            ECONPLUS.setMinSize(200, 100);
+
+            BUS = new VBox();
+            BUS.getChildren().addAll(INFO4);
+//            BUS.setMinSize(200, 100);
+
+            //hbox box2      
+            BOX2.getChildren().addAll(AIRPORTS,ECON,ECONPLUS,BUS);
+            CONTAINER[i] = BOX2;
+            SCROLL.setContent(CONTAINER[i]);
+        }
+        for (int i = 0; i < 10; i++) {
+            System.out.println(CONTAINER[i]);
+        }
         
         //main center box
         MAINBOX = new VBox();
