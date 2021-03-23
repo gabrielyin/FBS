@@ -24,3 +24,137 @@ Rio de Janeiro,Paris,2021-03-18,2021-03-25,4,null
 Rio de Janeiro,Paris,2021-03-18,2021-03-25,2,null
 Rio de Janeiro,Paris,2021-03-18,2021-03-25,3,null
 Rio de Janeiro,Paris,2021-03-18,2021-03-25,7,null
+Rio de Janeiro,Paris,2021-03-20,2021-03-26,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-21,2021-03-28,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-21,2021-03-23,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-20,2021-03-25,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-20,2021-03-25,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-20,2021-03-25,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-20,2021-03-27,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-21,2021-03-28,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-20,2021-03-27,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-25,2021-03-30,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-25,2021-04-06,1,Economy Plus
+Paris,Lisbon,2021-03-26,2021-04-14,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-25,2021-03-31,1,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-20,2021-03-26,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-20,2021-03-26,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Business
+Rio de Janeiro,Paris,2021-03-20,2021-03-27,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Paris,Rio de Janeiro,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Paris,Rio de Janeiro,2021-03-26,2021-04-02,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Lisbon,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Lisbon,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Lisbon,2021-03-31,2021-04-07,1,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-04-01,2021-04-08,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Lisbon,2021-03-23,2021-03-30,1,Economy
+Rio de Janeiro,Paris,2021-03-23,2021-03-30,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Lisbon,2021-03-23,2021-03-30,1,Economy
+Rio de Janeiro,Paris,2021-03-23,2021-03-30,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-23,2021-03-30,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Lisbon,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-26,2021-04-02,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy Plus
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Paris,Rio de Janeiro,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,1,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-04-01,3,Economy Plus
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,3,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,3,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,3,Economy
+Rio de Janeiro,null,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,null,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy Plus
+Rio de Janeiro,Lisbon,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-04-02,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Lisbon,London,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy

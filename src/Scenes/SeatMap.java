@@ -8,13 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -38,32 +36,11 @@ public class SeatMap {
     Rectangle SEATS;
     StackPane STACK;
     
+    Decorum PROP;
+    
     public SeatMap(Stage MAINWINDOW, String USER) throws IOException{
-        //background image    
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-        
-        // Menubar management
-        MENUBAR1 = new HBox();
-        MENUBAR1.setId("MENUBAR");
-        MYACCOUNT = new MyAccount(MAINWINDOW, USER);
-        //search flight
-        MENU1 = new Button("Search Flights");
-        //flight status
-        MENU2 = new Button("Flight Status");
-        //account
-        MENU3 = new Button("My Account");
-        MENU3.setOnAction(e->{
-            System.out.println("My Account selected");
-            MAINWINDOW.setScene(MYACCOUNT.getScreen());
-        });
-        //adding menu items to menubar
-        MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
-        
+        PROP = new Decorum();
+       
         //first hbox
         BOX1 = new HBox();
         
@@ -75,7 +52,7 @@ public class SeatMap {
         
         PLANE = new Text();
         PLANE.setText("767-300");
-        
+         
         BOX1.setAlignment(Pos.TOP_CENTER);
         BOX1.setPadding(new Insets(10,0,10,0));
         BOX1.setSpacing(50);
@@ -88,18 +65,15 @@ public class SeatMap {
         SM.setText("Seat Map");
         
         BUSINESS = new Label("Business");
-        
         ECONOMYPLUS = new Label("Economy Plus");
-        
         ECONOMY = new Label("Economy");
-        
         OCCUPIED = new Label("Occupied");
         
         BOX2.setAlignment(Pos.TOP_CENTER);
         BOX2.setPadding(new Insets(10,0,10,0));
         BOX2.setSpacing(200);
         BOX2.getChildren().addAll(SM,BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED);
-        
+       
         //seat map
         HBOX1 = new HBox();
         
@@ -121,7 +95,6 @@ public class SeatMap {
         
         SELECTED = new Text();
         SELECTED.setText("Seat(s) Selected: ");
-        
         CONTINUE = new Button("Continue");
         PASSENGER = new Passengers(MAINWINDOW, USER);
         System.out.println("read done");
@@ -140,8 +113,8 @@ public class SeatMap {
         
         //pane management
         PANE = new BorderPane();
-        PANE.setBackground(new Background(BCIMG));
-        PANE.setTop(MENUBAR1);
+        PANE.setBackground(new Background(PROP.BCIMG));
+        PANE.setTop(PROP.Bars(MAINWINDOW, USER));        
         PANE.setCenter(CONTAINER);
         
         ENTRANCE = new Scene(PANE,800,1400,Color.RED);

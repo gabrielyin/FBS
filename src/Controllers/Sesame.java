@@ -19,13 +19,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Sesame {
-    Text T1;
-    VBox LAYOUT1, LAYOUT2;
-    Scene ASDF;
+    boolean GRANTACCESS, TIC;
     Image Background, IMG;
     BackgroundImage BCIMG;
+    Text T1;
     Button B1;
-    boolean GRANTACCESS, TIC;
+    VBox LAYOUT1, LAYOUT2;
+    Scene ASDF;
     
     UserController TESTUSER;
     
@@ -48,42 +48,41 @@ public class Sesame {
     }
     
     public void IsNoGood(Boolean TIC){
-                //popup MINIWINDOW when Username or Password is incorrect
-                Stage MINIWINDOW = new Stage();
-                MINIWINDOW.getIcons().add(new Image("IALOGO.png"));
-                IMG = new Image("background.png");
-                BCIMG = new BackgroundImage(IMG,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    BackgroundSize.DEFAULT);
+        //popup MINIWINDOW when Username or Password is incorrect
+        Stage MINIWINDOW = new Stage();
+        MINIWINDOW.getIcons().add(new Image("IALOGO.png"));
+        IMG = new Image("background.png");
+        BCIMG = new BackgroundImage(IMG,
+        BackgroundRepeat.NO_REPEAT,
+        BackgroundRepeat.NO_REPEAT,
+        BackgroundPosition.CENTER,
+        BackgroundSize.DEFAULT);
                     
-                MINIWINDOW.initModality(Modality.APPLICATION_MODAL);
-                MINIWINDOW.setMinWidth(250);
-                MINIWINDOW.setMinHeight(250);
+        MINIWINDOW.initModality(Modality.APPLICATION_MODAL);
+        MINIWINDOW.setMinWidth(250);
+        MINIWINDOW.setMinHeight(250);
                 
-                T1 = new Text();
-                if (!TIC){
-                    T1.setText("Incorrect username or password");
-                }else{
-                    T1.setText("Emails do not match");
-                }
+        T1 = new Text();
+        if (!TIC){
+            T1.setText("Incorrect username or password");
+        }else{
+            T1.setText("Emails do not match");
+        }
                 
-                //Button 1
-                B1 = new Button("Close");
-                B1.setOnAction(e->{
-                    MINIWINDOW.close();
-                });
+        //Button 1
+        B1 = new Button("Close");
+        B1.setOnAction(e->{
+            MINIWINDOW.close();
+        });
                 
-                LAYOUT1 = new VBox(30);
-                LAYOUT1.getChildren().addAll(T1, B1);
-                LAYOUT1.setAlignment(Pos.CENTER);
-                LAYOUT1.setBackground(new Background(BCIMG));
+        LAYOUT1 = new VBox(30);
+        LAYOUT1.getChildren().addAll(T1, B1);
+        LAYOUT1.setAlignment(Pos.CENTER);
+        LAYOUT1.setBackground(new Background(BCIMG));
                 
-                ASDF = new Scene(LAYOUT1);
-                ASDF.getStylesheets().add("Decor.css");
-                MINIWINDOW.setScene(ASDF);
-                MINIWINDOW.showAndWait();
+        ASDF = new Scene(LAYOUT1);
+        ASDF.getStylesheets().add("Decor.css");
+        MINIWINDOW.setScene(ASDF);
+        MINIWINDOW.showAndWait();
     }
-     
 }

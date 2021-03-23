@@ -4,62 +4,27 @@ import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MyAccount {
-    Image IMG;
-    BackgroundImage BCIMG;
     Scene ENTRANCE4;
     BorderPane PANE;
-    HBox MENUBAR1;
     MyAccount MYACCOUNT;
-    Button MENU1,MENU2,MENU3;
     VBox MAIN;
     Text T1,T2,T3,T4,T5,T6,T7,T8;
     
+    Decorum PROP;
     Mainwindow MW;
     MyNewClass HOME;
     
     public MyAccount(Stage MAINWINDOW, String NAMEUSER) throws IOException {
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-                
-        MENUBAR1 = new HBox();
-        MENUBAR1.setId("MENUBAR");
-        //search flight
-        MENU1 = new Button("Search Flights");
-        MENU1.setOnAction(e->{
-            System.out.println("Search Flight Selected");
-            try{
-                HOME = new MyNewClass(MAINWINDOW, NAMEUSER); 
-                MAINWINDOW.setScene(HOME.getScreen());
-            }catch(IOException MyAccountError){
-                System.out.println("My Account doesnt reach My New Class");
-            }
-        });
-        //flight status
-        MENU2 = new Button("Flight Status");
-        //account
-        MENU3 = new Button("My Account");
-        //adding menu items to menubar
-        MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
-
+        PROP = new Decorum(); 
+        
         T1 = new Text();
         T1.setText("Welcome Back: ");
         
@@ -92,8 +57,8 @@ public class MyAccount {
 
         
         PANE = new BorderPane();
-        PANE.setBackground(new Background(BCIMG));
-        PANE.setTop(MENUBAR1);
+        PANE.setBackground(new Background(PROP.BCIMG));
+        PANE.setTop(PROP.Bars(MAINWINDOW, NAMEUSER));
         PANE.setCenter(MAIN);
         
         ENTRANCE4 = new Scene(PANE,800,1400,Color.RED);

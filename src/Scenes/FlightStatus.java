@@ -13,15 +13,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -46,40 +43,10 @@ public class FlightStatus {
     Button CONTINUE;
     Text AIRPORT,FLIGHTNUM,STATUS,DEPAR,ARRAR,DEPTIME,ARRTIME;
     
+    Decorum PROP;
+    
     public FlightStatus(Stage MAINWINDOW, String USER) throws IOException{
-        //background image
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-        
-        //menu bar management
-        MENUBAR1 = new HBox();
-        MENUBAR1.setId("MENUBAR");
-        //search flight
-        MENU1 = new Button("Search Flights");
-        MENU1.setOnAction(e->{
-            System.out.println("Search Flight Selected");
-            try{
-                HOME = new MyNewClass(MAINWINDOW, USER); 
-                MAINWINDOW.setScene(HOME.getScreen());
-            }catch(IOException MyAccountError){
-                System.out.println("My Account doesnt reach My New Class");
-            }
-        });
-        //flight status
-        MENU2 = new Button("Flight Status");
-        //account
-        MENU3 = new Button("My Account");
-        MYACCOUNT = new MyAccount(MAINWINDOW, USER);
-        MENU3.setOnAction(e->{
-            System.out.println("My Account selected");
-            MAINWINDOW.setScene(MYACCOUNT.getScreen());
-        });
-        //adding menu items to menubar
-        MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
+        PROP = new Decorum();
         
         //radial buttons
         TOGGLE = new ToggleGroup();
@@ -181,8 +148,8 @@ public class FlightStatus {
         
         //pane management
         PANE = new BorderPane();
-        PANE.setBackground(new Background(BCIMG));
-        PANE.setTop(MENUBAR1);
+        PANE.setBackground(new Background(PROP.BCIMG));
+        PANE.setTop(PROP.Bars(MAINWINDOW, USER));
         PANE.setCenter(MAINCONTAINER);
         
         ENTRANCE = new Scene(PANE,800,1400,Color.RED);

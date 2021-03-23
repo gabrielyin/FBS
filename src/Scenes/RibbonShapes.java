@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Scenes;
 
 import javafx.event.ActionEvent;
@@ -16,15 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import static javafx.scene.layout.BackgroundPosition.CENTER;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 /**
  *
@@ -33,8 +22,6 @@ import javafx.stage.Stage;
 public class RibbonShapes {
     Scene ENTRANCE;
     BorderPane BPANE;
-    Image IMG;
-    BackgroundImage BCIMG;
     Button APRES,AVANT;
     Button[] HOUSE;
     HBox[] BOXSEAT;
@@ -46,15 +33,12 @@ public class RibbonShapes {
     Integer[] ACTION;
     Integer MAKE,BINTER;
     
+    Decorum PROP;
+    
     public RibbonShapes(){
+        PROP=  new Decorum();
+
         BPANE = new BorderPane();
-        
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
         
         APRES = new Button(">");
         APRES.setOnAction((f) -> {
@@ -144,7 +128,7 @@ public class RibbonShapes {
         
         BPANE.setTop(BOXOPTIONS);
         BPANE.setCenter(BOXES);
-        BPANE.setBackground(new Background(BCIMG));
+        BPANE.setBackground(new Background(PROP.BCIMG));
         ENTRANCE = new Scene(BPANE,450,800,Color.BLACK);
         ENTRANCE.getStylesheets().add("Decor.css");
     }

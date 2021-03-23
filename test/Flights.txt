@@ -1,0 +1,11 @@
+B761,A001,LIS->RIO,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B762,A002,RIO->LIS,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B763,A003,RIO->PAR,departs: 09:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B764,A004,PAR->RIO,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B765,A005,LON->PAR,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B766,A006,PAR->LON,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B767,A007,LON->RIO,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B767,A008,RIO->LON,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B768,A009,LON->LIS,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+B769,A010,LIS->LON,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map
+A770,A011,LIS->PAR,departs: 21:30,arrives: 0:30+1, Stops: Direct,Details, Seat Map

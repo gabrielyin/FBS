@@ -11,12 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -28,33 +23,25 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Mainwindow {
-    Button LOGINUP, SIGNUPB, QUIT, STAFF;
-    Image IMG;
-    BackgroundImage BCIMG;
     Text TITLE,TITLE2,TITLE3;
+    Label ACCOUNTNAME, PASSWORD, EMAILNAME, STAFFID;
     TextField AN,EMAIL,EMAIL2,SID;
     PasswordField PS;
-    Label ACCOUNTNAME, PASSWORD, EMAILNAME, STAFFID;
+    Button LOGINUP, SIGNUPB, QUIT, STAFF;
     String NAMEUSER;
     HBox TOP,BOTTOM;
     VBox MID,TEST;
     BorderPane PANE;
     Scene ENTRANCE;
-    FileWriter PAXINFO;
 
+    Decorum PROP;    
     Sesame HEYHO,HEYHO2;
     MyNewClass HOME;
     RecordMe SIGNUP;
     
     public Mainwindow(Stage MAINWINDOW) {
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
+        PROP = new Decorum();    
         
-        //components management
         TITLE2 = new Text();
         TITLE2.setText("Login to Account");
         
@@ -120,12 +107,11 @@ public class Mainwindow {
                     NAMEUSER = AN.getText();                 
                     AN.clear();
                     PS.clear();
-                    
                     HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
                     MAINWINDOW.setScene(HOME.getScreen());
                 }
             } catch (IOException ex){
-                System.out.println("HELAS, HORACE");
+                System.out.println("PROBLEMS");
             }
         });
         
@@ -181,7 +167,7 @@ public class Mainwindow {
         PANE = new BorderPane();
         PANE.setCenter(MID);
         PANE.setBottom(TEST);
-        PANE.setBackground(new Background(BCIMG));
+        PANE.setBackground(new Background(PROP.BCIMG));
         
         ENTRANCE = new Scene(PANE,800,1400,Color.RED);
         ENTRANCE.getStylesheets().add("Decor.css");

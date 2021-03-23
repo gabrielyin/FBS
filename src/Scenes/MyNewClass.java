@@ -1,9 +1,6 @@
 package Scenes;
 
 import Controllers.MenuFiller;
-import Scenes.Passengers;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,12 +22,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -40,72 +32,53 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MyNewClass {
-    String GOCITY,BACKCITY,FILECONTENT;
-    Integer CITYSELECT,DDAY;
-    Object ITEM;
-    Boolean CONDI,SELECT;
-    Image IMG;
-    BackgroundImage BCIMG;
     Text TITLE;
     ToggleGroup TOGGLE;
-    RadioButton ROUNDTRIP,ONEWAY;
-    ChoiceBox DEPARTURE, ARRIVAL;
+    RadioButton ROUNDTRIP,ONEWAY;    
+    HBox MID,ADULTBOX,INFANTBOX,RADIOBUTTONS;
+    ChoiceBox DEPARTURE, ARRIVAL;    
+    Integer CITYSELECT,DDAY;
+    Object ITEM;    
+    String GOCITY,BACKCITY,FILECONTENT;
     ComboBox CLASS;
     DatePicker GODATE,BACKDATE;
+    Label ADULTS,INFANTS; 
+    Button SEARCH;
+    Boolean CONDI,TICONE=false;
     LocalDate TODAY,LPICK;    
-    TextField DEPDATE,IN,ARRDATE,AD; 
-    Label ADULTS,INFANTS;     
-    Button SEARCH,MENU1,MENU2,MENU3;
-    VBox MAINLEFT,MAINRIGHT;
-    HBox MID,ADULTBOX,INFANTBOX,RADIOBUTTONS,MENUBAR1;
-    BorderPane PANE;
-    Scene ENTRANCE;
-    MyAccount MYACCOUNT;
-    FlightStatus FLIGHTSTATUS;
-    String VAR1,VAR2,VAR3,VAR4,VAR6;
+    TextField IN,AD; 
     PrintWriter PAXINFO2;
-    FileReader PAXINFO;
     String[] PAXCONTENT,FILEDATA;
     Integer VAR5,PAXNUM;
+    VBox MAINLEFT,MAINRIGHT,MAINRIGHT1,MAINRIGHT2;
+    BorderPane PANE;
+    Scene ENTRANCE;
+    
+    Decorum PROP;
+    MenuFiller OPTIONS,OPTIONS2;  
+    MyAccount MYACCOUNT;
+    FlightStatus FLIGHTSTATUS;
+    FlightResults FLIGHTRESULTS; 
     Passengers PASSENGERS;
-    FileReader READ;
-    BufferedReader BUFFEREDREADER;
     
-    MenuFiller OPTIONS,OPTIONS2;   
-    FlightResults FLIGHTRESULTS;    
-    boolean CHECKER;
-    
+    @SuppressWarnings("empty-statement")
     public MyNewClass(Stage MAINWINDOW, String NAMEUSER) throws IOException{
-        IMG = new Image("background.png");
-        BCIMG = new BackgroundImage(IMG,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-
-// Menubar management
-        MENUBAR1 = new HBox();
-        MENUBAR1.setId("MENUBAR");
-        MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
-        FLIGHTSTATUS = new FlightStatus(MAINWINDOW, NAMEUSER);
-        //search flight
-        MENU1 = new Button("Search Flights");
-        //flight status
-        MENU2 = new Button("Flight Status");
-        MENU2.setOnAction(e->{
-            MAINWINDOW.setScene(FLIGHTSTATUS.getScreen());
-        });
-        //account
-        MENU3 = new Button("My Account");
-        MENU3.setOnAction(e->{
-            MAINWINDOW.setScene(MYACCOUNT.getScreen());
-        });
-        //adding menu items to menubar
-        MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);
+        PROP = new Decorum(); 
 
 // Title management
         TITLE = new Text();
         TITLE.setText("Book a Flight");
+  
+// Date fields and management     
+        GODATE = new DatePicker(LocalDate.now());
+        GODATE.setMaxWidth(500);
+        GODATE.setShowWeekNumbers(false);
+        GODATE.setPrefHeight(40);
+        GODATE.setPromptText("Departure Date");
+        MAINRIGHT1 = new VBox(15);
+        BACKDATE = new DatePicker(); 
+        DPickMe();
+        DPock();          
         
 // Radio buttons management
         //roud trip button
@@ -113,9 +86,13 @@ public class MyNewClass {
         ROUNDTRIP = new RadioButton();
         ROUNDTRIP.setText("Round Trip");
         ROUNDTRIP.setToggleGroup(TOGGLE);
-        ROUNDTRIP.setDisable(true);
+        ROUNDTRIP.setDisable(false);
         ROUNDTRIP.setOnAction(e->{
-            MAINRIGHT.getChildren().add(3,BACKDATE);
+            if(TICONE){
+                MAINRIGHT1.getChildren().add(BACKDATE);
+                MAINRIGHT1.setPadding(new Insets(0,0,0,0));                 
+                TICONE=false;
+            }
         });
         
         //oneway button
@@ -123,10 +100,11 @@ public class MyNewClass {
         ONEWAY.setText("One-Way");
         ONEWAY.setToggleGroup(TOGGLE);
         ONEWAY.setOnAction(e->{
-            MAINRIGHT.getChildren().remove(BACKDATE);
+            MAINRIGHT1.getChildren().remove(BACKDATE);
+            MAINRIGHT1.setPadding(new Insets(0,0,55,0)); 
+            TICONE = true;
             ROUNDTRIP.setDisable(false);
         });
-        
         RADIOBUTTONS = new HBox(30);
         RADIOBUTTONS.getChildren().addAll(ROUNDTRIP,ONEWAY);
         RADIOBUTTONS.setAlignment(Pos.CENTER_LEFT);
@@ -146,9 +124,6 @@ public class MyNewClass {
         DEPARTURE.setOnAction((Event event) -> {
             CITYSELECT = DEPARTURE.getSelectionModel().getSelectedIndex();
             ITEM = DEPARTURE.getSelectionModel().getSelectedItem();
-
-            System.out.println("Selection made: [" + CITYSELECT + "] " + ITEM);
-            System.out.println("   DEPARTURE.getValue(): " + DEPARTURE.getValue());
             GOCITY = (String)DEPARTURE.getValue();
             OPTIONS2 = new MenuFiller(); 
             try {
@@ -164,26 +139,10 @@ public class MyNewClass {
         CLASS.setPrefWidth(500);
         CLASS.setPromptText("Class");
         CLASS.setTooltip(new Tooltip("Select Class"));
-        CLASS.getItems().add("Economy");
-        CLASS.getItems().add("Economy Plus");
-        CLASS.getItems().add("Business");
-
-// Date fields and management        
-        GODATE = new DatePicker(LocalDate.now());
-        GODATE.setMaxWidth(500);
-        GODATE.setShowWeekNumbers(false);
-        GODATE.setPrefHeight(40);
-        GODATE.setPromptText("Departure Date");
-        BACKDATE = new DatePicker();
-        DPickMe();
-        DPock();        
-        
-//FAKE TITLTE
-        Text TITLE2 = new Text();
-        TITLE2.setText("");
-        
-        Text TITLE3 = new Text();
-        TITLE2.setText("");
+        CLASS.getItems().addAll("Economy","Economy Plus","Business");
+        CLASS.setOnAction((Event event) -> {
+           System.out.println(CLASS.getValue()); 
+        });
         
 // Elements to complete the scene        
         ADULTS = new Label();
@@ -215,31 +174,46 @@ public class MyNewClass {
         SEARCH.setText("Search");
         SEARCH.setPrefWidth(500);
         SEARCH.setPrefHeight(40);
-        FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER);
+
         SEARCH.setOnAction(e->{
-            try{
-            //
-            PAXCONTENT = new String[6];
-            //storing departure and arrival airoprt in variabel
-            PAXCONTENT[0] = (String) DEPARTURE.getSelectionModel().getSelectedItem();
-            PAXCONTENT[1] = (String) ARRIVAL.getSelectionModel().getSelectedItem();
-            //adding dates to variable
-            PAXCONTENT[2] = GODATE.getValue().toString();
-            PAXCONTENT[3] = BACKDATE.getValue().toString();
-            //getting number of passengers
-            //PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
-            PAXCONTENT[4] = String.valueOf(Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText()));
-            //number = PAXCONTENT[4];
-            //getting class
-            PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
-            //adding these variables to txt file
-            MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
-            
-            Passengers passengers = new Passengers(MAINWINDOW,NAMEUSER);
-            
-            MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());
-            } catch (IOException ex){
-                System.out.println("PROBLBEMS");
+            if (AD.getText()==null || AD.getText().trim().isEmpty()
+                || IN.getText()==null || IN.getText().trim().isEmpty()    
+                || DEPARTURE.getValue()==null
+                || CLASS.getValue()==null){
+                System.out.println("Selection not completed");
+            }else{
+                //
+                PAXCONTENT = new String[6];
+                for (int i=0;i<6;i++){
+                    PAXCONTENT[i]="0";
+                    System.out.println();
+                }
+                    //storing departure and arrival airoprt in variabel
+                PAXCONTENT[0] = (String) DEPARTURE.getSelectionModel().getSelectedItem();
+                PAXCONTENT[1] = (String) ARRIVAL.getSelectionModel().getSelectedItem();
+                BACKCITY = (String) ARRIVAL.getSelectionModel().getSelectedItem();
+                PAXCONTENT[2] = GODATE.getValue().toString();
+
+                //getting number of PASSENGERS
+                PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!"+PAXNUM);
+                if (!TICONE){
+                    PAXCONTENT[3] = BACKDATE.getValue().toString();
+                }
+                    
+                PAXCONTENT[4] = String.valueOf(Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText()));
+
+                //number = PAXCONTENT[4];
+                //getting class
+                PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
+                try {
+                    MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
+                    FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER,GOCITY,BACKCITY);
+                    PASSENGERS = new Passengers(MAINWINDOW,NAMEUSER);
+                } catch (IOException ex) {
+                    System.out.println("Error");
+                }
+                MAINWINDOW.setScene(FLIGHTRESULTS.getScreen());                
             }
         });
         
@@ -249,9 +223,12 @@ public class MyNewClass {
         MAINLEFT.setPadding(new Insets(0,0,0,0));
         MAINLEFT.setAlignment(Pos.CENTER_LEFT);
 
-        MAINRIGHT = new VBox(15);
-        MAINRIGHT.getChildren().addAll(TITLE2,TITLE3,ARRIVAL,BACKDATE,CLASS,SEARCH);
-        MAINRIGHT.setPadding(new Insets(0,0,0,0));
+        MAINRIGHT1.getChildren().addAll(ARRIVAL,BACKDATE);
+        MAINRIGHT2 = new VBox(15);
+        MAINRIGHT2.getChildren().addAll(CLASS,SEARCH);        
+        MAINRIGHT = new VBox(15);        
+        MAINRIGHT.getChildren().addAll(MAINRIGHT1,MAINRIGHT2);        
+        MAINRIGHT.setPadding(new Insets(60,0,0,0));
         MAINRIGHT.setAlignment(Pos.CENTER_LEFT);
 
         MID = new HBox(10);
@@ -260,8 +237,8 @@ public class MyNewClass {
         MID.setAlignment(Pos.CENTER);   
                 
         PANE = new BorderPane();
-        PANE.setBackground(new Background(BCIMG));
-        PANE.setTop(MENUBAR1);
+        PANE.setBackground(new Background(PROP.BCIMG));
+        PANE.setTop(PROP.Bars(MAINWINDOW, NAMEUSER));
         PANE.setCenter(MID);
         
         ENTRANCE = new Scene(PANE,800,1400,Color.RED);
