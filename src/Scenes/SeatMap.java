@@ -8,11 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -26,7 +27,7 @@ public class SeatMap {
     BackgroundImage BCIMG;
     Scene ENTRANCE;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX2,BOX3,HBOX1;
+    HBox MENUBAR1,BOX1,BOX2,BOX3,HBOX1,SEATMAP;
     VBox CONTAINER;
     MyAccount MYACCOUNT;
     Button MENU1,MENU2,MENU3,CONTINUE;
@@ -77,18 +78,23 @@ public class SeatMap {
         //seat map
         HBOX1 = new HBox();
         
+        //seatmap
+        SEATMAP = new HBox();
+        
         //rectangle
         SEATS = new Rectangle();
-        SEATS.setHeight(10);
-        SEATS.setWidth(10); 
-//      SEATMAP.setBackground(new Background(new BackgroundFill(Color.BLACK,CornerRadii.EMPTY,Insets.EMPTY)));
+        SEATS.setHeight(20);
+        SEATS.setWidth(20);
+        SEATS.setFill(Color.WHITE);
+        SEATMAP.setBackground(new Background(new BackgroundFill(Color.BLACK,CornerRadii.EMPTY,Insets.EMPTY)));
         //adding seats to hbox
-        HBOX1.setMinSize(1000, 580);
-        HBOX1.getChildren().addAll(SEATS);
+        SEATMAP.setPadding(new Insets(30,30,30,30));
+        SEATMAP.setMinSize(1000, 580);
+        SEATMAP.getChildren().addAll(SEATS);
         
         //adding hbox1 to vbox1
         VBox VBOX1 = new VBox();
-        VBOX1.getChildren().addAll(HBOX1);
+        VBOX1.getChildren().addAll(SEATMAP);
 
         //third hbox
         BOX3 = new HBox();
@@ -109,7 +115,7 @@ public class SeatMap {
         
         //main container
         CONTAINER = new VBox();
-        CONTAINER.getChildren().addAll(BOX1,BOX2/*add seat map here*/,BOX3);
+        CONTAINER.getChildren().addAll(BOX1,BOX2,VBOX1/*add seat map here*/,BOX3);
         
         //pane management
         PANE = new BorderPane();

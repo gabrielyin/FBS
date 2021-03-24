@@ -158,3 +158,15 @@ Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
 Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
 Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
 Rio de Janeiro,Paris,2021-03-24,2021-03-31,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Paris,London,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,null,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Paris,Rio de Janeiro,2021-03-25,2021-04-01,2,Economy
+Rio de Janeiro,Paris,2021-03-25,2021-04-01,2,Economy
+Paris,Rio de Janeiro,2021-03-25,2021-04-01,2,Economy

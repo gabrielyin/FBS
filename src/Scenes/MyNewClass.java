@@ -81,12 +81,12 @@ public class MyNewClass {
         DPock();          
         
 // Radio buttons management
-        //roud trip button
+        //round trip button
         TOGGLE = new ToggleGroup();
         ROUNDTRIP = new RadioButton();
         ROUNDTRIP.setText("Round Trip");
         ROUNDTRIP.setToggleGroup(TOGGLE);
-        ROUNDTRIP.setDisable(false);
+        ROUNDTRIP.setDisable(true);
         ROUNDTRIP.setOnAction(e->{
             if(TICONE){
                 MAINRIGHT1.getChildren().add(BACKDATE);
@@ -179,7 +179,8 @@ public class MyNewClass {
             if (AD.getText()==null || AD.getText().trim().isEmpty()
                 || IN.getText()==null || IN.getText().trim().isEmpty()    
                 || DEPARTURE.getValue()==null
-                || CLASS.getValue()==null){
+                || CLASS.getValue()==null
+                || ARRIVAL.getValue()==null){
                 System.out.println("Selection not completed");
             }else{
                 //
