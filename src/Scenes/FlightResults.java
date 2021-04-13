@@ -90,17 +90,18 @@ public class FlightResults {
         FILTER = new Button("Filter");
         FILTER.setOnAction(e->{
             EARLYSELECTED = (String) EARLY.getSelectionModel().getSelectedItem();
+            BIGONE.getChildren().clear();
             if (EARLYSELECTED.equals("early")) {
+                FlightBox(GOCITY,BACKCITY,MAINWINDOW,USER);
                 for (int i=0;i<CONTAINER.length;i++) {
                     if (Integer.parseInt(LINES.getStructure().get(i).getDepart().substring(9,11))>12) {
-                        System.out.println(LINES.getStructure().get(i).getDepart().substring(9,11));
                         BIGONE.getChildren().remove(CONTAINER[i]);
                     }
                 }
             }else{
+                FlightBox(GOCITY,BACKCITY,MAINWINDOW,USER);
                 for (int i=0;i<CONTAINER.length;i++) {
                     if (Integer.parseInt(LINES.getStructure().get(i).getDepart().substring(9,11))<12) {
-                        System.out.println(LINES.getStructure().get(i).getDepart().substring(9,11));
                         BIGONE.getChildren().remove(CONTAINER[i]);
                     }
                 }
@@ -140,6 +141,30 @@ public class FlightResults {
 
         BIGONE = new VBox();
         FLAG = 1;
+        FlightBox(GOCITY,BACKCITY,MAINWINDOW,USER);
+        //that will go into a scrool pane
+        SCROLL.setContent(BIGONE);
+
+        //main center box
+        MAINBOX = new VBox(30);
+        MAINBOX.setAlignment(Pos.TOP_CENTER);
+        MAINBOX.getChildren().addAll(BOX1,SCROLL);
+        MAINBOX.setPadding(new Insets(0,0,10,0));
+        
+        //pane management
+        PANE = new BorderPane();
+        PANE.setBackground(new Background(PROP.BCIMG));
+        PANE.setTop(PROP.Bars(MAINWINDOW, USER));
+        PANE.setCenter(MAINBOX);
+
+        ENTRANCE3 = new Scene(PANE,800,1400,Color.RED);
+        ENTRANCE3.getStylesheets().add("Decor.css");
+    }
+    public Scene getScreen(){
+        return ENTRANCE3;
+    }
+    
+    public void FlightBox(String GOCITY,String BACKCITY,Stage MAINWINDOW,String USER){
         for (int i=0;i<LINES.getStructure().size();i++){
             if(LINES.getStructure().get(i).getFlightItself().substring(0,3).equals(GOCITY.substring(0,3).toUpperCase())&&LINES.getStructure().get(i).getFlightItself().substring(5,8).equals(BACKCITY.substring(0,3).toUpperCase())){
                 INFO01 = new Label(LINES.getStructure().get(i).getFlightN1());
@@ -199,34 +224,5 @@ public class FlightResults {
                 BIGONE.getChildren().add(CONTAINER[i]);                 
             }
         }
-        System.out.println(BIGONE);
-        //that will go into a scrool pane
-        SCROLL.setContent(BIGONE);
-        
-//        for (int i = 0; i < LINES.getStructure().size(); i++) {
-//            CONTAINER[i].setOnMouseClicked((MouseEvent)->{
-//                
-//            });
-//        }
-        
-
-        
-        //main center box
-        MAINBOX = new VBox(30);
-        MAINBOX.setAlignment(Pos.TOP_CENTER);
-        MAINBOX.getChildren().addAll(BOX1,SCROLL);
-        MAINBOX.setPadding(new Insets(0,0,10,0));
-        
-        //pane management
-        PANE = new BorderPane();
-        PANE.setBackground(new Background(PROP.BCIMG));
-        PANE.setTop(PROP.Bars(MAINWINDOW, USER));
-        PANE.setCenter(MAINBOX);
-
-        ENTRANCE3 = new Scene(PANE,800,1400,Color.RED);
-        ENTRANCE3.getStylesheets().add("Decor.css");
-    }
-    public Scene getScreen(){
-        return ENTRANCE3;
     }
 }

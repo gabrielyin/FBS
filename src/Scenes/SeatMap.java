@@ -3,7 +3,6 @@ package Scenes;
 import Controllers.FlightController;
 import Modules.LineFlight;
 import java.io.IOException;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -42,6 +41,7 @@ public class SeatMap {
     Integer LIGNE, COL;
     StackPane STACK;
     String F;
+    final int INDEX = 0;
     
     Decorum PROP;
     FlightController LINES;
@@ -103,9 +103,13 @@ public class SeatMap {
                 SEATS1[k][j].setWidth(20);
                 SEATS1[k][j].setFill(Color.AQUA); 
                 LIGNE = k;
-                COL = j;  
+                COL = j;
+                final int INDEX = k;
+                final int INDEX2 = j;
                 SEATS1[k][j].setOnMouseClicked((MouseEvent e) -> {
                     Touch(LIGNE,COL);
+                    System.out.println("ROW"+INDEX);
+                    System.out.println("COLUMN"+INDEX2);
                 });
                 
                 
