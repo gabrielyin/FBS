@@ -23,10 +23,9 @@ public class FlightController {
         while((FILECONTENT = BUFFEREDREADER.readLine()) != null){
             FILEDATA = FILECONTENT.split(",");
             FLIGHT = new LineFlight(FILEDATA[0],FILEDATA[1],FILEDATA[2],FILEDATA[3],
-                FILEDATA[4],FILEDATA[5],FILEDATA[6],FILEDATA[7]);
+                FILEDATA[4],FILEDATA[5],FILEDATA[6],FILEDATA[7],FILEDATA[8]);
             FLIGHTS.add(FLIGHT);
-            System.out.println("Hey: "+FILEDATA[4]);
-        }
+            }
         FILEREADER.close();
     }
     

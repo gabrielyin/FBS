@@ -9,13 +9,14 @@ public class LineFlight {
     String STOPOVER;
     String LINK1;
     String LINK2;
+    String INDEX;
     
     public LineFlight() {
     
     }
     
     public LineFlight(String FLIGHTN1,String FLIGHTN2,String FLIGHTITSELF,
-                String DEPART, String ARRIVAL, String STOPOVER, String LINK1,String LINK2){
+                String DEPART, String ARRIVAL, String STOPOVER, String LINK1,String LINK2,String INDEX){
         this.FLIGHTN1 = FLIGHTN1;
         this.FLIGHTN2 = FLIGHTN2;
         this.FLIGHTITSELF = FLIGHTITSELF;   
@@ -23,7 +24,8 @@ public class LineFlight {
         this.ARRIVAL = ARRIVAL; 
         this.STOPOVER = STOPOVER;
         this.LINK1 = LINK1;
-        this.LINK2 = LINK2;        
+        this.LINK2 = LINK2;
+        this.INDEX = INDEX;
     }
     
     public String getFlightN1(){
@@ -71,10 +73,16 @@ public class LineFlight {
         this.LINK1 = LINK1;
     }
     public String getLink2(){
-        return STOPOVER;
+        return LINK2;
     }
     public void setLink2(String LINK2){
         this.LINK2 = LINK2;
-    }    
+    }
+    public String getIndex(){
+        return INDEX;
+    }
+    public void setIndex(String INDEX){
+        this.INDEX = INDEX;
+    }
 }
  

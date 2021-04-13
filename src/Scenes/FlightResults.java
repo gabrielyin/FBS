@@ -5,12 +5,12 @@ import Modules.LineFlight;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javafx.event.Event;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -32,18 +32,20 @@ public class FlightResults {
     RadioButton NONSTOP;
     Button CONTINUE,FILTER;
     VBox MINBOX01,OTHERINFO,V1BOX,BOX1,MAINBOX,AIRPORTS,ECON,
-            ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2,BIGONE;    
+            ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2,BIGONE;
     DateTimeFormatter DTF;  
     LocalDateTime NOW;    
     Label CURRENTDATE,INFO01,INFO02,INFO03,INFO04,INFO05,INFO06,INFO07,FLIGHT,
-            INFO1,INFO21,INFO22,INFO31,INFO32,INFO41,INFO42;
+            INFO1,INFO22,INFO32,INFO42,INFO21,INFO31,INFO41;
     HBox[] CONTAINER;
+    Button[] BCONTAINER;
+    private int lastClickedIndex = -1;     
     HBox TITLEBOX,BOX01,BOX02,BOXUNIT,BOX3,BOX4,BOX5;
     ScrollPane SCROLL;
     BorderPane PANE;
     Scene ENTRANCE3;
-    String EARLYSELECTED;
-    Integer NUMBER1;
+    String EARLYSELECTED,NUM,AIRPLANE;
+    Integer NUMBER1,FLAG;
     
     Decorum PROP;    
     FlightController LINES;
@@ -51,6 +53,7 @@ public class FlightResults {
     SeatMap SEATMAP;
     MyNewClass HOME;
     MyAccount MYACCOUNT;
+    String INDEX;
             
     public FlightResults(Stage MAINWINDOW, String USER, String GOCITY, String BACKCITY) throws IOException{
         PROP = new Decorum();         
@@ -78,11 +81,11 @@ public class FlightResults {
         
         //button management
         CONTINUE = new Button("Continue");
-        SEATMAP = new SeatMap(MAINWINDOW, USER);
-        CONTINUE.setOnAction(e->{
-            System.out.println("Continue");
-            MAINWINDOW.setScene(SEATMAP.getScreen());
-        });
+//        SEATMAP = new SeatMap(MAINWINDOW, USER);
+//        CONTINUE.setOnAction(e->{
+//            System.out.println("Continue");
+//            MAINWINDOW.setScene(SEATMAP.getScreen());
+//        });
         
         FILTER = new Button("Filter");
         FILTER.setOnAction(e->{
@@ -95,7 +98,12 @@ public class FlightResults {
                     }
                 }
             }else{
-
+                for (int i=0;i<CONTAINER.length;i++) {
+                    if (Integer.parseInt(LINES.getStructure().get(i).getDepart().substring(9,11))<12) {
+                        System.out.println(LINES.getStructure().get(i).getDepart().substring(9,11));
+                        BIGONE.getChildren().remove(CONTAINER[i]);
+                    }
+                }
             }
         });
         
@@ -128,11 +136,13 @@ public class FlightResults {
         
         //Fake dynamic array
         CONTAINER = new HBox[LINES.getStructure().size()];
+        BCONTAINER = new Button[LINES.getStructure().size()];        
 
         BIGONE = new VBox();
+        FLAG = 1;
         for (int i=0;i<LINES.getStructure().size();i++){
-                if(LINES.getStructure().get(i).getFlightItself().substring(0,3).equals(GOCITY.substring(0,3).toUpperCase())&&LINES.getStructure().get(i).getFlightItself().substring(5,8).equals(BACKCITY.substring(0,3).toUpperCase())){
-                INFO01 = new Label(LINES.getStructure().get(i).getFlightN1()); 
+            if(LINES.getStructure().get(i).getFlightItself().substring(0,3).equals(GOCITY.substring(0,3).toUpperCase())&&LINES.getStructure().get(i).getFlightItself().substring(5,8).equals(BACKCITY.substring(0,3).toUpperCase())){
+                INFO01 = new Label(LINES.getStructure().get(i).getFlightN1());
                 INFO02 = new Label(LINES.getStructure().get(i).getFlightN2());
                 MINBOX01 = new VBox();
                 MINBOX01.getChildren().addAll(INFO01,INFO02);
@@ -154,6 +164,7 @@ public class FlightResults {
                 INFO41 = new Label("Price business");
                 INFO41.setFont(new Font(20));
                 INFO42 = new Label("     $3600");  
+
                 //Boxes in data
                 OTHERINFO = new VBox();
                 OTHERINFO.getChildren().addAll(INFO03,INFO04,INFO05,INFO06,INFO07);
@@ -171,13 +182,34 @@ public class FlightResults {
                 BOXUNIT.setSpacing(10);
                 BOXUNIT.getChildren().addAll(V1BOX,ECON,ECONPLUS,BUS);              
                 // Lines of flight going from BOXUNIT to CONTAINER
+                final int buttonInd = i;                
+               
                 CONTAINER[i] = new HBox(BOXUNIT);
+                CONTAINER[i].setOnMouseClicked(e -> {
+                    lastClickedIndex = buttonInd;
+                    try {
+                        SEATMAP = new SeatMap(MAINWINDOW,USER,lastClickedIndex );
+                    } catch (IOException ex) {
+                        System.out.println("Error");
+                    }
+                    MAINWINDOW.setScene(SEATMAP.getScreen());
+                }); 
+                
                 // the box Line by line goes into a big final box 
                 BIGONE.getChildren().add(CONTAINER[i]);                 
             }
         }
+        System.out.println(BIGONE);
         //that will go into a scrool pane
         SCROLL.setContent(BIGONE);
+        
+//        for (int i = 0; i < LINES.getStructure().size(); i++) {
+//            CONTAINER[i].setOnMouseClicked((MouseEvent)->{
+//                
+//            });
+//        }
+        
+
         
         //main center box
         MAINBOX = new VBox(30);
