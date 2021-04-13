@@ -242,3 +242,11 @@ Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
 Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
 Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
 Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy
+Rio de Janeiro,Paris,2021-04-14,2021-04-21,2,Economy

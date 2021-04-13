@@ -40,7 +40,7 @@ public class SeatMap {
     Rectangle[][] SEATS1,SEATS2,SEATS3;
     Integer LIGNE, COL;
     StackPane STACK;
-    String F;
+    String F,SELECTEDSEAT;
     final int INDEX = 0;
     
     Decorum PROP;
@@ -110,6 +110,9 @@ public class SeatMap {
                     Touch(LIGNE,COL);
                     System.out.println("ROW"+INDEX);
                     System.out.println("COLUMN"+INDEX2);
+                    SEATS1[INDEX][INDEX2].setFill(Color.BLACK);
+                    SELECTEDSEAT = "Row: "+INDEX+" Column: "+INDEX2;
+                    SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
                 });
                 
                 
@@ -128,7 +131,16 @@ public class SeatMap {
                 SEATS2[k][j] = new Rectangle();
                 SEATS2[k][j].setHeight(20);
                 SEATS2[k][j].setWidth(20);
-                SEATS2[k][j].setFill(Color.BURLYWOOD);            
+                SEATS2[k][j].setFill(Color.BURLYWOOD);
+                LIGNE = k;
+                COL = j;
+                final int INDEX = k;
+                final int INDEX2 = j;
+                SEATS2[k][j].setOnMouseClicked((MouseEvent e) -> {
+                    Touch(LIGNE,COL);
+                    System.out.println("ROW"+INDEX);
+                    System.out.println("COLUMN"+INDEX2);
+                });
                 SEATMAP2[k].getChildren().addAll(SEATS2[k][j]);
             }    
             VBOX2.getChildren().addAll(SEATMAP2[k]);            
@@ -144,7 +156,16 @@ public class SeatMap {
                 SEATS3[k][j] = new Rectangle();
                 SEATS3[k][j].setHeight(20);
                 SEATS3[k][j].setWidth(20);
-                SEATS3[k][j].setFill(Color.GOLD);            
+                SEATS3[k][j].setFill(Color.GOLD);
+                LIGNE = k;
+                COL = j;
+                final int INDEX = k;
+                final int INDEX2 = j;
+                SEATS3[k][j].setOnMouseClicked((MouseEvent e) -> {
+                    Touch(LIGNE,COL);
+                    System.out.println("ROW"+INDEX);
+                    System.out.println("COLUMN"+INDEX2);
+                });
                 SEATMAP3[k].getChildren().addAll(SEATS3[k][j]);
             }    
             VBOX3.getChildren().addAll(SEATMAP3[k]);            
@@ -153,7 +174,7 @@ public class SeatMap {
         BOX3 = new HBox();
         
         SELECTED = new Text();
-        SELECTED.setText("Seat(s) Selected: ");
+        SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
         CONTINUE = new Button("Continue");
         PASSENGER = new Passengers(MAINWINDOW, USER);
         System.out.println("read done");

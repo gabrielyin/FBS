@@ -68,7 +68,7 @@ public class FlightResults {
         STOPOVER.getItems().addAll("0","1","2","more");
         EARLY = new ComboBox();
         EARLY.setPromptText("Day part"); 
-        EARLY.getItems().addAll("early","late");
+        EARLY.getItems().addAll("Early","Late");
 //        EARLY.setOnAction(e->{
 //            EARLYSELECTED = (String) EARLY.getSelectionModel().getSelectedItem();
 //            for (int i = CONTAINER.length; i < 10; i++) {
