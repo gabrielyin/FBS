@@ -5,8 +5,6 @@ import Modules.LineFlight;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -63,9 +61,9 @@ public class FlightResults {
         FLAGD = new ImageView(new Image("LIS.jpg"));
         
         //comboboxes
-        STOPOVER = new ComboBox();
-        STOPOVER.setPromptText("Stop over");
-        STOPOVER.getItems().addAll("0","1","2","more");
+//        STOPOVER = new ComboBox();
+//        STOPOVER.setPromptText("Stop over");
+//        STOPOVER.getItems().addAll("Direct","1");
         EARLY = new ComboBox();
         EARLY.setPromptText("Day part"); 
         EARLY.getItems().addAll("Early","Late");
@@ -116,7 +114,7 @@ public class FlightResults {
         //Top window
         BOX01 = new HBox(30);
         BOX01.setPadding(new Insets(10,0,0,0));
-        BOX01.getChildren().addAll(STOPOVER,EARLY,FILTER);
+        BOX01.getChildren().addAll(/*STOPOVER*/EARLY,FILTER);
         BOX01.setAlignment(Pos.TOP_CENTER);
         BOX02 = new HBox(220);
         BOX02.setPadding(new Insets(0,0,0,0));

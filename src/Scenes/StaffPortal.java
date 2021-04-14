@@ -36,12 +36,19 @@ public class StaffPortal {
         
         //columns
         DATE = new TableColumn("Date");
+        DATE.setMinWidth(200);
         RESERVATION = new TableColumn("Reservation");
+        RESERVATION.setMinWidth(200);
         NAME = new TableColumn("Name");
+        NAME.setMinWidth(200);
         SURNAME = new TableColumn("Surname");
+        SURNAME.setMinWidth(200);
         ORIGIN = new TableColumn("Origin");
+        ORIGIN.setMinWidth(200);
         DEST = new TableColumn("Dest");
+        DEST.setMinWidth(200);
         PAX = new TableColumn("Pax");
+        PAX.setMinWidth(200);
         
         //adding columns to table
         TABLE.getColumns().addAll(DATE,RESERVATION,NAME,SURNAME,ORIGIN,DEST,PAX);

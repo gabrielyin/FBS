@@ -38,6 +38,7 @@ public class Mainwindow {
     Sesame HEYHO,HEYHO2;
     MyNewClass HOME;
     RecordMe SIGNUP;
+    StaffPortal SPORTAL;
     
     public Mainwindow(Stage MAINWINDOW) {
         PROP = new Decorum();    
@@ -108,7 +109,9 @@ public class Mainwindow {
                     AN.clear();
                     PS.clear();
                     HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
+//                    SPORTAL = new StaffPortal(MAINWINDOW);
                     MAINWINDOW.setScene(HOME.getScreen());
+//                    MAINWINDOW.setScene(SPORTAL.getScreen());
                 }
             } catch (IOException ex){
                 System.out.println("PROBLEMS");

@@ -11,3 +11,8 @@ Rio de Janeiro,Paris,2021-04-15,2021-04-22,4,Economy
 Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
 Rio de Janeiro,Paris,2021-04-15,2021-04-22,4,Economy
 Rio de Janeiro,Paris,2021-04-15,2021-04-22,6,Economy
+Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
+Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
+Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
+Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
+Rio de Janeiro,Paris,2021-04-15,2021-04-22,2,Economy
