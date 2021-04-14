@@ -91,7 +91,7 @@ public class FlightResults {
         FILTER.setOnAction(e->{
             EARLYSELECTED = (String) EARLY.getSelectionModel().getSelectedItem();
             BIGONE.getChildren().clear();
-            if (EARLYSELECTED.equals("early")) {
+            if (EARLYSELECTED.equals("Early")) {
                 FlightBox(GOCITY,BACKCITY,MAINWINDOW,USER);
                 for (int i=0;i<CONTAINER.length;i++) {
                     if (Integer.parseInt(LINES.getStructure().get(i).getDepart().substring(9,11))>12) {

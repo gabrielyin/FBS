@@ -45,7 +45,10 @@ public class SeatMap {
     
     Decorum PROP;
     FlightController LINES;
-    LineFlight LINEFLIGHT;    
+    LineFlight LINEFLIGHT;  
+    
+    int PNUM;
+    int c=0;
     
     public SeatMap(Stage MAINWINDOW, String USER, Integer i) throws IOException{
         LINEFLIGHT = new LineFlight();
@@ -107,14 +110,16 @@ public class SeatMap {
                 final int INDEX = k;
                 final int INDEX2 = j;
                 SEATS1[k][j].setOnMouseClicked((MouseEvent e) -> {
-                    Touch(LIGNE,COL);
-                    System.out.println("ROW"+INDEX);
-                    System.out.println("COLUMN"+INDEX2);
-                    SEATS1[INDEX][INDEX2].setFill(Color.BLACK);
-                    SELECTEDSEAT = "Row: "+INDEX+" Column: "+INDEX2;
-                    SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
+                    if (c<PASSENGER.readStuff()) {                       
+                        Touch(LIGNE,COL);
+                        System.out.println("ROW"+INDEX);
+                        System.out.println("COLUMN"+INDEX2);
+                        SEATS1[INDEX][INDEX2].setFill(Color.BLACK);
+                        SELECTEDSEAT = "Row: "+INDEX+" Column: "+INDEX2;
+                        SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
+                        c++;
+                    }
                 });
-                
                 
                 SEATMAP1[k].getChildren().addAll(SEATS1[k][j]);
             }    
@@ -137,9 +142,15 @@ public class SeatMap {
                 final int INDEX = k;
                 final int INDEX2 = j;
                 SEATS2[k][j].setOnMouseClicked((MouseEvent e) -> {
+                    if (c<PASSENGER.readStuff()) {
                     Touch(LIGNE,COL);
                     System.out.println("ROW"+INDEX);
                     System.out.println("COLUMN"+INDEX2);
+                    SEATS2[INDEX][INDEX2].setFill(Color.BLACK);
+                    SELECTEDSEAT = "Row: "+INDEX+" Column: "+INDEX2;
+                    SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
+                    c++;
+                    }
                 });
                 SEATMAP2[k].getChildren().addAll(SEATS2[k][j]);
             }    
@@ -162,9 +173,15 @@ public class SeatMap {
                 final int INDEX = k;
                 final int INDEX2 = j;
                 SEATS3[k][j].setOnMouseClicked((MouseEvent e) -> {
-                    Touch(LIGNE,COL);
-                    System.out.println("ROW"+INDEX);
-                    System.out.println("COLUMN"+INDEX2);
+                    if (c<PASSENGER.readStuff()) {
+                        Touch(LIGNE,COL);
+                        System.out.println("ROW"+INDEX);
+                        System.out.println("COLUMN"+INDEX2);
+                        SEATS3[INDEX][INDEX2].setFill(Color.BLACK);
+                        SELECTEDSEAT = "Row: "+INDEX+" Column: "+INDEX2;
+                        SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
+                        c++;
+                    }
                 });
                 SEATMAP3[k].getChildren().addAll(SEATS3[k][j]);
             }    
