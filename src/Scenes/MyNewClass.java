@@ -210,7 +210,6 @@ public class MyNewClass {
                 try {
                     MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
                     FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER,GOCITY,BACKCITY);
-                    PASSENGERS = new Passengers(MAINWINDOW,NAMEUSER);
                 } catch (IOException ex) {
                     System.out.println("Error");
                 }

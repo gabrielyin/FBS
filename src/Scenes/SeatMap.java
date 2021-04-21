@@ -193,7 +193,7 @@ public class SeatMap {
         SELECTED = new Text();
         SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
         CONTINUE = new Button("Continue");
-        PASSENGER = new Passengers(MAINWINDOW, USER);
+        PASSENGER = new Passengers(MAINWINDOW, USER, i);
         System.out.println("read done");
         CONTINUE.setOnAction(e->{
             MAINWINDOW.setScene(PASSENGER.getScreen());

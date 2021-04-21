@@ -17,7 +17,7 @@ public class RecordPassenger {
     public void RecordPassenger(String DATA,long position) throws IOException{
         WRITER2 = new RandomAccessFile("test/passengerrecord.txt", "rw");
         WRITER2.write(DATA.getBytes("HELLO"),CountPassenger("test/passengerrecord.txt")-2,5);
-        System.out.println("New Login Details Saved");
+        System.out.println("Passenger recorded");
         WRITER2.close();
     }
     
@@ -26,8 +26,8 @@ public class RecordPassenger {
     }
     
     public void NewPassenger(String DATE,String RESERVATION,String NAME,String SURNAME,String ORIGIN,String DEST,String PAX) throws IOException{
-        PRINTPASSENGER = new PrintWriter(new FileWriter("recordpassenger.txt",true));
-//        PRINTPASSENGER.write(AN+","+PS+","+EMAIL+"\n");
+        PRINTPASSENGER = new PrintWriter(new FileWriter("test/passengerrecord.txt",true));
+        PRINTPASSENGER.write(DATE+","+RESERVATION+","+NAME+","+SURNAME+","+ORIGIN+","+DEST+","+PAX+"\n");
         PRINTPASSENGER.close();
     }
 }

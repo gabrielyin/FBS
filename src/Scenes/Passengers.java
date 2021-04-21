@@ -1,5 +1,7 @@
 package Scenes;
 
+import Controllers.FlightController;
+import Controllers.RecordPassenger;
 import Modules.Pax;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
@@ -41,11 +44,18 @@ public class Passengers {
     Pax PAX;
     MyNewClass MYNEWCLASS;
     private Scanner FILE;
+    String RESERVATION;
+    RecordPassenger RECORD;
+    FlightResults FLIGHTRESULTS;
+    FlightController LINES;
     
     Decorum PROP;
     
-    public Passengers(Stage MAINWINDOW,String NAMEUSER) throws IOException{
+    public Passengers(Stage MAINWINDOW,String NAMEUSER,Integer index) throws IOException{
         PROP = new Decorum();
+        
+        //reservation number
+        RESERVATION = "123";
          
         //confirmation boxes
         MAINBOX = new VBox();
@@ -79,6 +89,8 @@ public class Passengers {
 //        System.out.println("Last line " + FILE);
         BOXARRAY = new HBox[10];
         
+        LINES = new FlightController(); 
+        
         for (int i = 0; i < readStuff(); i++) {
 //            System.out.println("gabriel to triste " + readStuff());
             BOX1 = new HBox();
@@ -109,6 +121,7 @@ public class Passengers {
             BAGS.getItems().addAll(
                 1,2
             );
+           
             BOX1.getChildren().addAll(PASSPORTNO,NAME,SURNAME,GENDER,BAGS);
             BOXARRAY[i] = BOX1;
             MAINBOX.getChildren().addAll(BOXARRAY[i]);
@@ -119,7 +132,16 @@ public class Passengers {
 
         FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, NAMEUSER);
         CONTINUE.setOnAction(e->{
-            MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
+            try {
+                for (int i = 0; i < readStuff(); i++) {
+                    
+                }
+                RECORD = new RecordPassenger();
+                RECORD.NewPassenger("hoje", "123", "gabriel", "yin", "gig", "par", "2");
+                MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
+            } catch(IOException ex){
+                System.out.println("error");
+            }
         });
         
         //adding button to bottom hbox
