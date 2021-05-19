@@ -50,7 +50,7 @@ public class SeatMap {
     int PNUM;
     int c=0;
     
-    public SeatMap(Stage MAINWINDOW, String USER, Integer i) throws IOException{
+    public SeatMap(Stage MAINWINDOW, String USER, Integer i, String GOCITY, String BACKCITY) throws IOException{
         LINEFLIGHT = new LineFlight();
         LINES = new FlightController();        
         PROP = new Decorum();
@@ -193,7 +193,7 @@ public class SeatMap {
         SELECTED = new Text();
         SELECTED.setText("Seat(s) Selected: "+SELECTEDSEAT);
         CONTINUE = new Button("Continue");
-        PASSENGER = new Passengers(MAINWINDOW, USER, i);
+        PASSENGER = new Passengers(MAINWINDOW, USER, i, GOCITY, BACKCITY);
         System.out.println("read done");
         CONTINUE.setOnAction(e->{
             MAINWINDOW.setScene(PASSENGER.getScreen());

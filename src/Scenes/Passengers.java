@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,10 +50,12 @@ public class Passengers {
     RecordPassenger RECORD;
     FlightResults FLIGHTRESULTS;
     FlightController LINES;
+    DateTimeFormatter DTF2;
+    LocalDateTime NOW2;
     
     Decorum PROP;
     
-    public Passengers(Stage MAINWINDOW,String NAMEUSER,Integer index) throws IOException{
+    public Passengers(Stage MAINWINDOW,String NAMEUSER,Integer index,String GOCITY,String BACKCITY) throws IOException{
         PROP = new Decorum();
         
         //reservation number
@@ -131,13 +135,15 @@ public class Passengers {
         CONTINUE = new Button("Continue");
 
         FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, NAMEUSER);
+        DTF2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+        NOW2 = LocalDateTime.now();
         CONTINUE.setOnAction(e->{
             try {
                 for (int i = 0; i < readStuff(); i++) {
                     
                 }
                 RECORD = new RecordPassenger();
-                RECORD.NewPassenger("hoje", "123", "gabriel", "yin", "gig", "par", "2");
+                RECORD.NewPassenger(DTF2.format(NOW2), RESERVATION, NAMEUSER, "yin", GOCITY, BACKCITY, readStuff());
                 MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
             } catch(IOException ex){
                 System.out.println("error");

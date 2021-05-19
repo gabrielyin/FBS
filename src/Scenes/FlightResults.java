@@ -211,7 +211,7 @@ public class FlightResults {
                 CONTAINER[i].setOnMouseClicked(e -> {
                     lastClickedIndex = buttonInd;
                     try {
-                        SEATMAP = new SeatMap(MAINWINDOW,USER,lastClickedIndex );
+                        SEATMAP = new SeatMap(MAINWINDOW,USER,lastClickedIndex,GOCITY,BACKCITY );
                     } catch (IOException ex) {
                         System.out.println("Error");
                     }

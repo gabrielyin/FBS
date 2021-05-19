@@ -25,7 +25,7 @@ public class RecordPassenger {
         return 0;
     }
     
-    public void NewPassenger(String DATE,String RESERVATION,String NAME,String SURNAME,String ORIGIN,String DEST,String PAX) throws IOException{
+    public void NewPassenger(String DATE,String RESERVATION,String NAME,String SURNAME,String ORIGIN,String DEST,int PAX) throws IOException{
         PRINTPASSENGER = new PrintWriter(new FileWriter("test/passengerrecord.txt",true));
         PRINTPASSENGER.write(DATE+","+RESERVATION+","+NAME+","+SURNAME+","+ORIGIN+","+DEST+","+PAX+"\n");
         PRINTPASSENGER.close();
