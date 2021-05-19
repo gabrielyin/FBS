@@ -29,23 +29,7 @@ public class Sesame {
     
     UserController TESTUSER;
     
-    public boolean sesame(Stage MAINWINDOW, TextField LOGIN, PasswordField PASSWORD) throws IOException{
-        GRANTACCESS = false;
-        try{
-            TESTUSER = new UserController();
-            if (TESTUSER.readUser(LOGIN.getText(), PASSWORD.getText())) {
-                GRANTACCESS = true;
-            }
-            else{
-                TIC = false;
-                IsNoGood(TIC);
-            }
-        }
-        catch(FileNotFoundException e){
-            System.out.println("Problems");
-        }    
-        return GRANTACCESS;
-    }
+
     
     public void IsNoGood(Boolean TIC){
         //popup MINIWINDOW when Username or Password is incorrect

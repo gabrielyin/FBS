@@ -1,1 +1,3 @@
 2021/05/12,123,Leo,yin,Paris,Rio de Janeiro,3
+2021/05/19,123,Leo,yin,Rio de Janeiro,Paris,2
+2021/05/19,123,null,yin,Rio de Janeiro,Paris,4

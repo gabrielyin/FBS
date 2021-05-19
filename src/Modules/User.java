@@ -1,18 +1,37 @@
 package Modules;
 
 public class User {
-    protected String USERNAME;
-    protected String PASSWORD;
+    private String USERNAME;
+    private String PASSWORD;
+    private String EMAIL;
+    private boolean ISSTAFF;
+
+    public User(String USERNAME, String PASSWORD, String EMAIL, boolean isStaff) {
+        this.USERNAME = USERNAME;
+        this.PASSWORD = PASSWORD;
+        this.EMAIL = EMAIL;
+        this.ISSTAFF = isStaff;
+    }
+
+    public boolean getIsStaff() {
+        return ISSTAFF;
+    }
+
+    public void setIsStaff(boolean isStaff) {
+        this.ISSTAFF = isStaff;
+    }
+
     
-    // Constructor without parameters
-    public User(){ 
+
+    public String getEmail() {
+        return EMAIL;
+    }
+
+    public void setEmail(String EMAIL) {
+        this.EMAIL = EMAIL;
     }
     
-    // Constructor with parameters
-    public User(String u, String p){
-        this.USERNAME = u;
-        this.PASSWORD = p;
-    }
+    
     
     // Username accessor
     public String getUsername(){

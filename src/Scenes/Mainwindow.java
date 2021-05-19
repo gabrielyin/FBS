@@ -2,6 +2,7 @@ package Scenes;
 
 import Controllers.RecordMe;
 import Controllers.Sesame;
+import Controllers.UserController;
 import java.io.FileWriter;
 import java.io.IOException;
 import javafx.geometry.Insets;
@@ -39,8 +40,11 @@ public class Mainwindow {
     MyNewClass HOME;
     RecordMe SIGNUP;
     StaffPortal SPORTAL;
+    UserController USERCONTROLLER;
     
     public Mainwindow(Stage MAINWINDOW) {
+        USERCONTROLLER = new UserController();
+        
         PROP = new Decorum();    
         
         TITLE2 = new Text();
@@ -103,15 +107,13 @@ public class Mainwindow {
         LOGINUP = new Button("Sign In");
         LOGINUP.setOnAction(e->{
             try{
-                HEYHO = new Sesame();
-                if (HEYHO.sesame(MAINWINDOW,AN,PS)) {
-                    NAMEUSER = AN.getText();                 
-                    AN.clear();
-                    PS.clear();
+                if (USERCONTROLLER.readUser(AN.getText(), PS.getText())) {
                     HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
-//                    SPORTAL = new StaffPortal(MAINWINDOW);
                     MAINWINDOW.setScene(HOME.getScreen());
-//                    MAINWINDOW.setScene(SPORTAL.getScreen());
+                }else if(USERCONTROLLER.readStaff(AN.getText(), PS.getText())){
+                    System.out.println("im staff");
+                    SPORTAL = new StaffPortal(MAINWINDOW);
+                    MAINWINDOW.setScene(SPORTAL.getScreen());
                 }
             } catch (IOException ex){
                 System.out.println("PROBLEMS");
