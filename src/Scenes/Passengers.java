@@ -1,7 +1,7 @@
 package Scenes;
 
+import Controllers.BookingController;
 import Controllers.FlightController;
-import Controllers.RecordPassenger;
 import Modules.Pax;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,20 +47,23 @@ public class Passengers {
     Pax PAX;
     MyNewClass MYNEWCLASS;
     private Scanner FILE;
-    String RESERVATION;
-    RecordPassenger RECORD;
+    int RESERVATION;
+
     FlightResults FLIGHTRESULTS;
     FlightController LINES;
     DateTimeFormatter DTF2;
     LocalDateTime NOW2;
+    BookingController BOOKINGCONTROLLER;
     
     Decorum PROP;
     
-    public Passengers(Stage MAINWINDOW,String NAMEUSER,Integer index,String GOCITY,String BACKCITY) throws IOException{
+    public Passengers(Stage MAINWINDOW,String USER,Integer index,String GOCITY,String BACKCITY) throws IOException{
         PROP = new Decorum();
+        BOOKINGCONTROLLER = new BookingController();
+        Random RANDOM = new Random();
         
         //reservation number
-        RESERVATION = "123";
+        RESERVATION = RANDOM.nextInt(900);
          
         //confirmation boxes
         MAINBOX = new VBox();
@@ -134,20 +138,16 @@ public class Passengers {
         //bottom part of scene
         CONTINUE = new Button("Continue");
 
-        FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, NAMEUSER);
+        FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, USER);
         DTF2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
         NOW2 = LocalDateTime.now();
         CONTINUE.setOnAction(e->{
-            try {
-                for (int i = 0; i < readStuff(); i++) {
-                    
-                }
-                RECORD = new RecordPassenger();
-                RECORD.NewPassenger(DTF2.format(NOW2), RESERVATION, NAMEUSER, "yin", GOCITY, BACKCITY, readStuff());
-                MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
-            } catch(IOException ex){
-                System.out.println("error");
+            for (int i = 0; i < readStuff(); i++) {
+
             }
+
+            BOOKINGCONTROLLER.create(DTF2.format(NOW2), RESERVATION, USER, GOCITY, BACKCITY, readStuff());
+            MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
         });
         
         //adding button to bottom hbox
@@ -160,7 +160,7 @@ public class Passengers {
         PANE = new BorderPane();
         PANE.setBackground(new Background(PROP.BCIMG));
         System.out.println("OSHHKAR"); 
-//        PANE.setTop(PROP.Bars(MAINWINDOW, NAMEUSER));
+//        PANE.setTop(PROP.Bars(MAINWINDOW, USER));
 
         PANE.setCenter(MAINBOX);
         PANE.setBottom(BOTTOM);

@@ -40,3 +40,25 @@ Rio de Janeiro,Paris,2021-05-13,2021-05-20,2,Economy
 Paris,Rio de Janeiro,2021-05-13,2021-05-20,3,Economy
 Rio de Janeiro,Paris,2021-05-20,2021-05-27,2,Economy
 Rio de Janeiro,Paris,2021-05-20,2021-05-27,4,Economy
+London,Lisbon,2021-07-07,2021-07-14,2,Economy
+Rio de Janeiro,Lisbon,2021-07-08,2021-07-16,2,Economy
+Rio de Janeiro,Lisbon,2021-07-03,2021-07-13,2,Economy
+Rio de Janeiro,Lisbon,2021-07-02,2021-07-10,2,Economy
+Rio de Janeiro,Lisbon,2021-07-02,2021-07-09,2,Economy
+Paris,Rio de Janeiro,2021-07-02,2021-07-09,2,Economy
+Rio de Janeiro,Paris,2021-07-09,2021-07-16,2,Economy
+Rio de Janeiro,Paris,2021-07-02,2021-07-09,2,Economy
+Rio de Janeiro,Paris,2021-07-02,2021-07-09,2,Economy
+Rio de Janeiro,Paris,2021-07-02,2021-07-09,2,Economy
+Paris,Rio de Janeiro,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Paris,Rio de Janeiro,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Lisbon,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy
+Rio de Janeiro,Paris,2021-07-23,2021-07-30,2,Economy

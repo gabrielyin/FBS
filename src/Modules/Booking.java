@@ -19,11 +19,10 @@ public class Booking {
     private String DEST;
     private int PAX;
 
-    public Booking(String date, int reservation, String name, String surname, String origin, String dest, int pax) {
+    public Booking(String date, int reservation, String name, String origin, String dest, int pax) {
         this.DATE = date;
         this.RESERVATION = reservation;
         this.NAME = name;
-        this.SURNAME = surname;
         this.ORIGIN = origin;
         this.DEST = dest;
         this.PAX = pax;
@@ -51,14 +50,6 @@ public class Booking {
 
     public void setName(String name) {
         this.NAME = name;
-    }
-
-    public String getSurname() {
-        return SURNAME;
-    }
-
-    public void setSurname(String surname) {
-        this.SURNAME = surname;
     }
 
     public String getOrigin() {

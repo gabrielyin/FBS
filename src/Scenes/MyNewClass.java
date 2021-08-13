@@ -209,6 +209,7 @@ public class MyNewClass {
                 PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
                 try {
                     MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
+                    System.out.println("THIS IS NAMEUSER MYNEwclass"+ NAMEUSER);
                     FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER,GOCITY,BACKCITY);
                 } catch (IOException ex) {
                     System.out.println("Error");

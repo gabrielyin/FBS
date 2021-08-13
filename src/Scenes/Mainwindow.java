@@ -108,6 +108,7 @@ public class Mainwindow {
         LOGINUP.setOnAction(e->{
             try{
                 if (USERCONTROLLER.readUser(AN.getText(), PS.getText())) {
+                    NAMEUSER = AN.getText();
                     HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
                     MAINWINDOW.setScene(HOME.getScreen());
                 }else if(USERCONTROLLER.readStaff(AN.getText(), PS.getText())){
