@@ -18,7 +18,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
@@ -31,7 +30,7 @@ public class Passengers {
     Scene ENTRANCE;
     BorderPane PANE;
     Button CONTINUE;
-    MyNewClass HOME;
+    SearchFlight HOME;
     MyAccount MYACCOUNT;
     VBox MAINBOX;
     HBox BOX1,BOX2,BOTTOM;
@@ -45,7 +44,7 @@ public class Passengers {
     BufferedReader BUFFEREDREADER;
     String[] FILEDATA;
     Pax PAX;
-    MyNewClass MYNEWCLASS;
+    SearchFlight MYNEWCLASS;
     private Scanner FILE;
     int RESERVATION;
 

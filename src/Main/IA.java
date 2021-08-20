@@ -1,6 +1,6 @@
 package Main;
 
-import Scenes.MyNewClass;
+import Scenes.SearchFlight;
 import Scenes.Mainwindow;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class IA extends Application{
     Stage MAINWINDOW;
     Mainwindow MAINONE;
-    MyNewClass MAINTWO;
+    SearchFlight MAINTWO;
     
     @Override
     public void start(Stage primaryStage)throws Exception {

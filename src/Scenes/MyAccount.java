@@ -20,7 +20,7 @@ public class MyAccount {
     
     Decorum PROP;
     Mainwindow MW;
-    MyNewClass HOME;
+    SearchFlight HOME;
     
     public MyAccount(Stage MAINWINDOW, String NAMEUSER) throws IOException {
         PROP = new Decorum(); 

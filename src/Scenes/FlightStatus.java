@@ -14,9 +14,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -32,7 +29,7 @@ public class FlightStatus {
     Button MENU1,MENU2,MENU3;
     MyAccount MYACCOUNT;
     BorderPane PANE;
-    MyNewClass HOME;
+    SearchFlight HOME;
     ScrollPane SCROLL;
     HBox BOX1,BOX2;
     VBox TOPCONTAINER,SCROLLCONTAINER,MAINCONTAINER,FLIGHTRESULTS;

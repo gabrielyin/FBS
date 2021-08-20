@@ -1,2 +1,3 @@
 2021/07/22,617,Oscar,Rio de Janeiro,Paris,2
 2021/07/22,713,Billy,Rio de Janeiro,Paris,2
+2021/08/19,390,Leo,Rio de Janeiro,Lisbon,2

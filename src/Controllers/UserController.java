@@ -3,6 +3,7 @@ package Controllers;
 import Modules.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -54,5 +55,18 @@ public class UserController {
             }
         }
         return false;
+    }
+
+    public void createUser(String name, String password, String email, boolean isStaff){
+        try {
+            FileWriter fileWriter = new FileWriter("./test/users.txt");
+            fileWriter.write(name + "," + password + "," + email + "," + isStaff);
+            fileWriter.write(System.lineSeparator());
+            USER = new User(name, password, email, isStaff);
+            USERS.add(USER);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

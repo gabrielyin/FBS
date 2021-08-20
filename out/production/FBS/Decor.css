@@ -1,0 +1,95 @@
+.button {
+-fx-background-color: linear-gradient(#D71A21, #D71A21);
+-fx-background-radius: 2;
+-fx-background-insets: 0;
+-fx-font-weight: bold;
+-fx-pref-height: 20px;
+-fx-pref-width: 120px;
+-fx-text-fill: pink;
+}
+.button:hover {
+-fx-pref-height: 25px;    
+-fx-text-fill: yellow;
+}
+
+.combo-box-popup .list-view .list-cell:hover{
+    -fx-background-color: red;
+    -fx-font-Weight: bold;
+    -fx-font-size: 14px;
+}
+
+.combo-box .combo-box-popup .list-cell:selected{
+    -fx-backgound-color: blue;
+    -fx-text-fill: red;
+}
+
+.menu-bar {
+    -fx-padding: 0 ;
+    -fx-background-color: linear-gradient(#ffFF00, #ae1daa) ;
+    -fx-background-insets: 0 ;
+    -fx-background-radius: 0 ;
+}
+.menu-bar > .container > .menu-button {
+    -fx-background-color: linear-gradient(#ffFF00, #ae1daa);
+}
+.menu-bar > .container > .menu-button > .label {
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px
+}
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+    -fx-background-color: orange;
+    -fx-font-weight: bold;
+}
+.menu-bar > .container > .menu-button:hover > .label,
+.menu-bar > .container > .menu-button:focused > .label,
+.menu-bar > .container > .menu-button:showing > .label {
+    -fx-text-fill: #FF0000;
+    -fx-font-weight: bold;
+}
+.menu-item .label {
+    -fx-text-fill: black;
+}
+.menu-item:focused {
+     -fx-background-color: linear-gradient(#ffFF00, #ae1daa);
+}
+.menu-item:focused .label {
+    -fx-text-fill: #00FF00;
+    -fx-font-weight: bold;    
+}
+
+#SEARCH{
+    -fx-pref-width: 500px;
+    -fx-pref-height: 40px;
+    -fx-text-fill: black;
+    -fx-background-radius: 2;
+}
+
+#MENUITEMS{
+    -fx-background-radius: 2;
+    -fx-text-fill: black;
+}
+
+#MENUITEMS:hover,#SEARCH:hover {
+    -fx-text-fill: beige;
+}
+
+#STAFFBUTTON{
+    -fx-pref-height: 20px;
+    -fx-pref-width: 400px;
+}
+
+#enterme{
+    -fx-control-inner-background: #FFFF00;
+    -fx-alignment: center;
+}
+
+#enterme:focused{
+    -fx-control-inner-background: orange;
+}
+
+#MENUBAR{
+    -fx-background-color: linear-gradient(#D71A21, #D71A21);
+}

@@ -20,7 +20,7 @@ public class FlightSummary {
     Image IMG;
     BackgroundImage BCIMG;
     HBox BOTTOM;
-    MyNewClass HOME;
+    SearchFlight HOME;
     MyAccount MYACCOUNT;
     BorderPane PANE;
     VBox MAINLEFT,MAINRIGHT;

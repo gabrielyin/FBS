@@ -31,7 +31,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class MyNewClass {
+public class SearchFlight {
     Text TITLE;
     ToggleGroup TOGGLE;
     RadioButton ROUNDTRIP,ONEWAY;    
@@ -62,7 +62,7 @@ public class MyNewClass {
     Passengers PASSENGERS;
     
     @SuppressWarnings("empty-statement")
-    public MyNewClass(Stage MAINWINDOW, String NAMEUSER) throws IOException{
+    public SearchFlight(Stage MAINWINDOW, String NAMEUSER) throws IOException{
         PROP = new Decorum(); 
 
 // Title management
@@ -183,7 +183,6 @@ public class MyNewClass {
                 || ARRIVAL.getValue()==null){
                 System.out.println("Selection not completed");
             }else{
-                //
                 PAXCONTENT = new String[6];
                 for (int i=0;i<6;i++){
                     PAXCONTENT[i]="0";
@@ -197,7 +196,6 @@ public class MyNewClass {
 
                 //getting number of PASSENGERS
                 PAXNUM = Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText());
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!"+PAXNUM);
                 if (!TICONE){
                     PAXCONTENT[3] = BACKDATE.getValue().toString();
                 }
@@ -257,22 +255,22 @@ public class MyNewClass {
         GODATE.setDayCellFactory(picker -> new DateCell(){
             @Override
             public void updateItem(LocalDate BONJOUR, boolean empty) {
-                super.updateItem(BONJOUR, empty);  
-                //Today date is yellow
-                TODAY = LocalDate.now();
-                if (BONJOUR.isEqual(TODAY)) {
-                    setStyle("-fx-background-color: #FFFF00");                
-                } 
-                //Blocks booking before today - no back in time
-                CONDI = (BONJOUR.isBefore(LocalDate.now().plusDays(1)));
-                if (CONDI){
-                    setDisable(true);
-                    setStyle("-fx-background-color: #d3d3d3;");
-                }else{
-                    setDisable(false);
-                    setStyle("-fx-background-color: #CCFFFF;");
-                    setStyle("-fx-font-fill: black;");
-                }                 
+            super.updateItem(BONJOUR, empty);
+            //Today date is yellow
+            TODAY = LocalDate.now();
+            if (BONJOUR.isEqual(TODAY)) {
+                setStyle("-fx-background-color: #FFFF00");
+            }
+            //Blocks booking before today - no back in time
+            CONDI = (BONJOUR.isBefore(LocalDate.now().plusDays(1)));
+            if (CONDI){
+                setDisable(true);
+                setStyle("-fx-background-color: #d3d3d3;");
+            }else{
+                setDisable(false);
+                setStyle("-fx-background-color: #CCFFFF;");
+                setStyle("-fx-font-fill: black;");
+            }
             }    
         });        
     }   

@@ -1,9 +1,8 @@
 package Scenes;
 
 import Controllers.RecordMe;
-import Controllers.Sesame;
 import Controllers.UserController;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -36,9 +35,8 @@ public class Mainwindow {
     Scene ENTRANCE;
 
     Decorum PROP;    
-    Sesame HEYHO,HEYHO2;
-    MyNewClass HOME;
-    RecordMe SIGNUP;
+
+    SearchFlight HOME;
     StaffPortal SPORTAL;
     UserController USERCONTROLLER;
     
@@ -109,7 +107,7 @@ public class Mainwindow {
             try{
                 if (USERCONTROLLER.readUser(AN.getText(), PS.getText())) {
                     NAMEUSER = AN.getText();
-                    HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
+                    HOME = new SearchFlight(MAINWINDOW,NAMEUSER);
                     MAINWINDOW.setScene(HOME.getScreen());
                 }else if(USERCONTROLLER.readStaff(AN.getText(), PS.getText())){
                     System.out.println("im staff");
@@ -127,14 +125,11 @@ public class Mainwindow {
             MID.getChildren().addAll(EMAILNAME,EMAIL,EMAIL2);
             SIGNUPB.setOnAction(f->{
                 try{
-                    if (EMAIL.getText().equals(EMAIL2.getText())){
-                        SIGNUP = new RecordMe();
-                        SIGNUP.NewMe(AN.getText(),PS.getText(),EMAIL.getText());
-                        HOME = new MyNewClass(MAINWINDOW,NAMEUSER);
+                    if (EMAIL.getText().equals(EMAIL2.getText()) && !EMAIL.getText().equals("")){
+                        USERCONTROLLER = new UserController();
+                        USERCONTROLLER.createUser(AN.getText(),PS.getText(),EMAIL.getText(),false);
+                        HOME = new SearchFlight(MAINWINDOW,NAMEUSER);
                         MAINWINDOW.setScene(HOME.getScreen());
-                    }else{
-                        HEYHO2 = new Sesame();
-                        HEYHO2.IsNoGood(true);
                     }
                 }catch (IOException ex){
                     System.out.println("PROBLEMS");

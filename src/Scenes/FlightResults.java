@@ -49,7 +49,7 @@ public class FlightResults {
     FlightController LINES;
     LineFlight LINEFLIGHT;
     SeatMap SEATMAP;
-    MyNewClass HOME;
+    SearchFlight HOME;
     MyAccount MYACCOUNT;
     String INDEX;
             
