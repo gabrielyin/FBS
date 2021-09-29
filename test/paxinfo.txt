@@ -236,3 +236,6 @@ Rio de Janeiro,Lisbon,2021-09-30,2021-10-07,1,Economy
 Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
 Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy
 Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
+Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy
