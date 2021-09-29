@@ -32,7 +32,7 @@ public class SeatMap {
     BackgroundImage BG;
     Scene ENTRANCE;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX11,BOX2,BOX3,INPLANE;
+    HBox MENUBAR1,BOX1,BOX11,BOX2,BOX3,INPLANE, HBOX1;
     HBox[] SEATMAP1,SEATMAP2,SEATMAP3;
     VBox CONTAINER,VBOX1,VBOX2,VBOX3;
     MyAccount MYACCOUNT;
@@ -101,17 +101,24 @@ public class SeatMap {
         
         // Seat map
         VBOX1 = new VBox();
+        HBOX1 = new HBox();
         Rectangle[][] rectA = new Rectangle[4][4];
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 Rectangle rect = new Rectangle();
-                rect.setHeight(20);
-                rect.setWidth(20);
+                rect.setHeight(25);
+                rect.setWidth(25);
                 rect.setId("A" + (i+1+(j*4)));
                 rect.setFill(Color.AQUA);
+                rect.setOnMouseClicked((MouseEvent e) -> {
+                    rect.setFill(Color.BLACK);
+                });
                 rectA[i][j] = rect;
+                HBOX1.getChildren().add(rectA[i][j]);
             }
+            VBOX1.getChildren().add(HBOX1);
         }
+        
                 
         VBOX2 = new VBox();
         Rectangle[][] rectB = new Rectangle[5][5];
