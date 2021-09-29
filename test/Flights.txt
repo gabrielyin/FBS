@@ -1,13 +1,13 @@
-B761,A001,LIS->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,0
-B762,A002,RIO->LIS,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,1
-B777,A003,RIO->PAR,departs: 09:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,2
-B764,A004,PAR->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,3
-B765,A005,LON->PAR,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,4
-B766,A006,PAR->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,5
-B767,A007,LON->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,6
-B767,A008,RIO->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,7
-B768,A009,LON->LIS,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,8
-B769,A010,LIS->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,9
-A770,A011,LIS->PAR,departs: 21:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,10
-B763,A012,RIO->PAR,departs: 13:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,11
-B766,A013,PAR->LON,departs: 07:30,arrives: 0:30+1,Stops: Direct,Details,Seat Map,12
+B761,A001,LIS->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,7710,400,0
+B762,A002,RIO->LIS,departs: 21:30,arrives: 0:30+1,Stops: Direct,7710,400,1
+B777,A003,RIO->PAR,departs: 09:30,arrives: 0:30+1,Stops: Direct,9162,800,2
+B764,A004,PAR->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,9162,800,3
+B765,A005,LON->PAR,departs: 21:30,arrives: 0:30+1,Stops: Direct,487,100,4
+B766,A006,PAR->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,487,100,5
+B767,A007,LON->RIO,departs: 21:30,arrives: 0:30+1,Stops: Direct,9278,900,6
+B767,A008,RIO->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,9278,900,7
+B768,A009,LON->LIS,departs: 21:30,arrives: 0:30+1,Stops: Direct,2200,180,8
+B769,A010,LIS->LON,departs: 21:30,arrives: 0:30+1,Stops: Direct,2200,180,9
+A770,A011,LIS->PAR,departs: 21:30,arrives: 0:30+1,Stops: Direct,1743,210,10
+B763,A012,RIO->PAR,departs: 13:30,arrives: 0:30+1,Stops: Direct,9162,800,11
+B766,A013,PAR->LON,departs: 07:30,arrives: 0:30+1,Stops: Direct,487,100,12

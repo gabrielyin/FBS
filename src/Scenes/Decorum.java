@@ -32,6 +32,7 @@ public class Decorum {
     public HBox Bars(Stage MAINWINDOW, String NAMEUSER) throws IOException{
         MENUBAR1 = new HBox();
         MENUBAR1.setId("MENUBAR");
+        MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
 //        MYACCOUNT = new MyAccount(MAINWINDOW, NAMEUSER);
 //        FLIGHTSTATUS = new FlightStatus(MAINWINDOW, NAMEUSER);
         //search flight
@@ -44,7 +45,7 @@ public class Decorum {
         //account
         MENU3 = new Button("My Account");
         MENU3.setOnAction(e->{
-//            MAINWINDOW.setScene(MYACCOUNT.getScreen());
+            MAINWINDOW.setScene(MYACCOUNT.getScreen());
         });
         //adding menu items to menubar
         MENUBAR1.getChildren().addAll(MENU1,MENU2,MENU3);        

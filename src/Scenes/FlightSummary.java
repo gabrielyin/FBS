@@ -1,6 +1,9 @@
 package Scenes;
 
 import java.io.IOException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,35 +29,49 @@ public class FlightSummary {
     VBox MAINLEFT,MAINRIGHT;
     HBox CONTAINER;
     Text SUMMARY,FLIGHTNUM,DEP,ARR,DEPARDATE,FTIME,DIS,PLANE,SEATS,BAG,HANDBAGS,RESCODE,FINA,CLASS,PRICE,FEES;
-    Decorum PROP;
+    String CODEME; 
     
-    public FlightSummary(Stage MAINWINDOW,String USER) throws IOException{
+    Random RESV;
+    Decorum PROP;
+    FlightResults FRES;
+    
+    public FlightSummary(Stage MAINWINDOW,String USER, Integer SUM1, String GOCITY, String BACKCITY, Integer SUMBAGS,String STYLESEAT) throws IOException{
         PROP = new Decorum();
-      
+        FRES = new FlightResults(MAINWINDOW,USER,GOCITY,BACKCITY);
+        
         //left box
         MAINLEFT = new VBox();
         SUMMARY = new Text("SUMMARY");
-        FLIGHTNUM = new Text("Flight Number: ");
-        DEP = new Text("Departure Airport: ");
-        ARR = new Text("Arrival Airport: ");
-        DEPARDATE = new Text("Departs: ");
-        FTIME = new Text("Flight Time: ");
-        DIS = new Text("Distance: ");
-        PLANE = new Text("Aircraft: ");
-        SEATS = new Text("Seat(s): ");
-        BAG = new Text("Bags: ");
-        HANDBAGS = new Text("Hand Baggage: ");
+        FLIGHTNUM = new Text("Flight Number: "+FRES.INFO01.getText());
+        DEP = new Text("Departure Airport: "+GOCITY);
+        ARR = new Text("Arrival Airport: "+BACKCITY);
+        DEPARDATE = new Text("Departs: "+FRES.INFO03.getText());
+        FTIME = new Text("Flight Time: "+FRES.INFO04.getText());
+        DIS = new Text("Distance: "+FRES.INFO06.getText()+"kms");
+        PLANE = new Text("Aircraft: "+FRES.INFO02.getText());
+        SEATS = new Text("Seat(s): "+String.valueOf(SUM1));
+        BAG = new Text("Bags: "+SUMBAGS);
+        HANDBAGS = new Text("Hand Baggage: "+String.valueOf(SUM1));
         MAINLEFT.setPadding(new Insets(80,70,0,0));
         MAINLEFT.setSpacing(20);
         MAINLEFT.getChildren().addAll(SUMMARY,FLIGHTNUM,DEP,ARR,DEPARDATE,FTIME,DIS,PLANE,SEATS,BAG,HANDBAGS);
             
         //right box
         MAINRIGHT = new VBox();
-        RESCODE = new Text("Reservation Code: ");
+        RESV = new Random();
+        for (int k = 0;k<3;k++){
+            int N = RESV.nextInt(10);
+            if (k>0){
+                CODEME = CODEME+String.valueOf(N);
+            }else{
+                CODEME = String.valueOf(N);                
+            }
+        }    
+        RESCODE = new Text("Reservation Code: "+FRES.INFO1.getText().substring(0,3)+CODEME);
         FINA = new Text("FINANCIAL SUMMARY");
-        CLASS = new Text("Class: ");
-        PRICE = new Text("Ticket Price: ");
-        FEES = new Text("Fees & Costs: ");
+        CLASS = new Text("Class: "+STYLESEAT);
+        PRICE = new Text("Ticket Price: £"+FRES.INFO07.getText());
+        FEES = new Text("Fees & Costs: £"+SUM1*Integer.parseInt(FRES.INFO07.getText()));
         MAINRIGHT.setPadding(new Insets(80,0,0,70));
         MAINRIGHT.setSpacing(20);
         MAINRIGHT.getChildren().addAll(RESCODE,FINA,CLASS,PRICE,FEES);
@@ -65,9 +82,14 @@ public class FlightSummary {
         CONTAINER.getChildren().addAll(MAINLEFT,MAINRIGHT);
         
         //continue button & price
-        Button CONTINUE = new Button("Continue");
+        Button CONTINUE = new Button("Purchase");
         CONTINUE.setOnAction(e->{
-          
+            try {
+                HOME = new SearchFlight(MAINWINDOW,USER);
+            } catch (IOException ex) {
+                Logger.getLogger(FlightSummary.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            MAINWINDOW.setScene(HOME.getScreen());
         });
         
         //bottom hbox

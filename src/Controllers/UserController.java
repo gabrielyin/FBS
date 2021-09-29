@@ -47,6 +47,27 @@ public class UserController {
         }
         return false;
     }
+
+    public String readUserEM(String USERNAME){
+        for (int i = 0; i < USERS.size(); i++) {
+            if (USERS.get(i).getUsername().equals(USERNAME)) {
+                System.out.println("User " + USERS.get(i).getUsername() + " read.");
+                return USERS.get(i).getEmail();
+            }
+        }
+        return "Nothing";
+    }
+
+        public String readUserPW(String USERNAME){
+        for (int i = 0; i < USERS.size(); i++) {
+            if (USERS.get(i).getUsername().equals(USERNAME)) {
+                System.out.println("User " + USERS.get(i).getUsername() + " read.");
+                return USERS.get(i).getPassword();
+            }
+        }
+        return "Nothing";
+    }
+    
     
     public boolean readStaff(String USERNAME, String PASSWORD){
         for (int i = 0; i < USERS.size(); i++) {

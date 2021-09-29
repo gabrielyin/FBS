@@ -1,6 +1,0 @@
-ClickMe
-ClickMeToo
-ClickMeInstead
-DoNotClick
-ClickClickClick
-Click

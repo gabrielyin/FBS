@@ -18,8 +18,8 @@ public class IA extends Application{
         
         MAINONE = new Mainwindow(MAINWINDOW);
         
-        MAINWINDOW.setHeight(800);
-        MAINWINDOW.setWidth(1400);
+        MAINWINDOW.setHeight(600);
+        MAINWINDOW.setWidth(800);
         MAINWINDOW.centerOnScreen();
         MAINWINDOW.setTitle("FBS"); 
         MAINWINDOW.getIcons().add(new Image("IALOGO.png"));        

@@ -28,7 +28,7 @@ public class FlightResults {
     ImageView FLAGA, FLAGB, FLAGC, FLAGD;
     ComboBox STOPOVER,EARLY;
     RadioButton NONSTOP;
-    Button CONTINUE,FILTER;
+    Button FILTER;
     VBox MINBOX01,OTHERINFO,V1BOX,BOX1,MAINBOX,AIRPORTS,ECON,
             ECONPLUS,BUS,AIRPORTS2,ECON2,ECONPLUS2,BUS2,BIGONE;
     DateTimeFormatter DTF;  
@@ -61,30 +61,12 @@ public class FlightResults {
         FLAGD = new ImageView(new Image("LIS.jpg"));
         
         //comboboxes
-//        STOPOVER = new ComboBox();
-//        STOPOVER.setPromptText("Stop over");
-//        STOPOVER.getItems().addAll("Direct","1");
         EARLY = new ComboBox();
         EARLY.setPromptText("Day part"); 
         EARLY.getItems().addAll("Early","Late");
-//        EARLY.setOnAction(e->{
-//            EARLYSELECTED = (String) EARLY.getSelectionModel().getSelectedItem();
-//            for (int i = CONTAINER.length; i < 10; i++) {
-//                NUMBER1 = LINES.getStructure().get(i).getDepart();
-//                if (>12) {
-//                    
-//                }
-//            }
-//        });
-        
+       
         //button management
-        CONTINUE = new Button("Continue");
-//        SEATMAP = new SeatMap(MAINWINDOW, USER);
-//        CONTINUE.setOnAction(e->{
-//            System.out.println("Continue");
-//            MAINWINDOW.setScene(SEATMAP.getScreen());
-//        });
-        
+      
         FILTER = new Button("Filter");
         FILTER.setOnAction(e->{
             EARLYSELECTED = (String) EARLY.getSelectionModel().getSelectedItem();
@@ -119,7 +101,7 @@ public class FlightResults {
         BOX02 = new HBox(220);
         BOX02.setPadding(new Insets(0,0,0,0));
         BOX02.setAlignment(Pos.TOP_CENTER);        
-        BOX02.getChildren().addAll(CURRENTDATE,CONTINUE);          
+        BOX02.getChildren().add(CURRENTDATE);          
         BOX1 = new VBox(20);
         BOX1.setPadding(new Insets(0,0,0,100));        
         BOX1.getChildren().addAll(BOX01,BOX02);        
@@ -155,7 +137,7 @@ public class FlightResults {
         PANE.setTop(PROP.Bars(MAINWINDOW, USER));
         PANE.setCenter(MAINBOX);
 
-        ENTRANCE3 = new Scene(PANE,800,1400,Color.RED);
+        ENTRANCE3 = new Scene(PANE,600,800,Color.RED);
         ENTRANCE3.getStylesheets().add("Decor.css");
     }
     public Scene getScreen(){
@@ -170,7 +152,7 @@ public class FlightResults {
                 MINBOX01 = new VBox();
                 MINBOX01.getChildren().addAll(INFO01,INFO02);
                 INFO1 = new Label(LINES.getStructure().get(i).getFlightItself(),FLAGA);
-                INFO1.setFont(new Font(30));        
+                INFO1.setFont(new Font(25));        
                 TITLEBOX = new HBox(10);
                 TITLEBOX.getChildren().addAll(INFO1,MINBOX01);
                 INFO03 = new Label(LINES.getStructure().get(i).getDepart());

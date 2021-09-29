@@ -71,7 +71,7 @@ public class SearchFlight {
   
 // Date fields and management     
         GODATE = new DatePicker(LocalDate.now());
-        GODATE.setMaxWidth(500);
+        GODATE.setMaxWidth(300);
         GODATE.setShowWeekNumbers(false);
         GODATE.setPrefHeight(40);
         GODATE.setPromptText("Departure Date");
@@ -111,11 +111,11 @@ public class SearchFlight {
 
 // ChoiceBox management        
         DEPARTURE = new ChoiceBox();
-        DEPARTURE.setMaxWidth(500);
+        DEPARTURE.setMaxWidth(300);
         DEPARTURE.setPrefHeight(40);
         DEPARTURE.setTooltip(new Tooltip("Select Departure Airport"));
         ARRIVAL = new ChoiceBox();
-        ARRIVAL.setMaxWidth(500);
+        ARRIVAL.setMaxWidth(300);
         ARRIVAL.setPrefHeight(40);
         ARRIVAL.setTooltip(new Tooltip("Select Arrival Airport"));
         
@@ -134,9 +134,9 @@ public class SearchFlight {
         });         
         
         CLASS = new ComboBox();
-        CLASS.setMaxWidth(500);
+        CLASS.setMaxWidth(300);
         CLASS.setPrefHeight(40);
-        CLASS.setPrefWidth(500);
+        CLASS.setPrefWidth(300);
         CLASS.setPromptText("Class");
         CLASS.setTooltip(new Tooltip("Select Class"));
         CLASS.getItems().addAll("Economy","Economy Plus","Business");
@@ -147,7 +147,7 @@ public class SearchFlight {
 // Elements to complete the scene        
         ADULTS = new Label();
         ADULTS.setText("Adults 12+");
-        ADULTS.setPrefWidth(400);
+        ADULTS.setPrefWidth(300);
         AD = new TextField();
         AD.setPrefWidth(90);
         AD.setPrefHeight(40);
@@ -159,7 +159,7 @@ public class SearchFlight {
         
         INFANTS = new Label();
         INFANTS.setText("Infants 0-11");
-        INFANTS.setPrefWidth(400);
+        INFANTS.setPrefWidth(300);
         IN = new TextField();
         IN.setPrefWidth(90);
         IN.setPrefHeight(40);
@@ -172,7 +172,7 @@ public class SearchFlight {
         SEARCH = new Button();
         SEARCH.setId("SEARCH");
         SEARCH.setText("Search");
-        SEARCH.setPrefWidth(500);
+        SEARCH.setPrefWidth(200);
         SEARCH.setPrefHeight(40);
 
         SEARCH.setOnAction(e->{
@@ -199,15 +199,10 @@ public class SearchFlight {
                 if (!TICONE){
                     PAXCONTENT[3] = BACKDATE.getValue().toString();
                 }
-                    
                 PAXCONTENT[4] = String.valueOf(Integer.parseInt(AD.getText())+Integer.parseInt(IN.getText()));
-
-                //number = PAXCONTENT[4];
-                //getting class
                 PAXCONTENT[5] = (String) CLASS.getSelectionModel().getSelectedItem();
                 try {
                     MyTrip(PAXCONTENT[0],PAXCONTENT[1],PAXCONTENT[2],PAXCONTENT[3],PAXCONTENT[4],PAXCONTENT[5]);
-                    System.out.println("THIS IS NAMEUSER MYNEwclass"+ NAMEUSER);
                     FLIGHTRESULTS = new FlightResults(MAINWINDOW, NAMEUSER,GOCITY,BACKCITY);
                 } catch (IOException ex) {
                     System.out.println("Error");
@@ -219,7 +214,7 @@ public class SearchFlight {
 // Building the pane                
         MAINLEFT = new VBox(15);
         MAINLEFT.getChildren().addAll(TITLE,RADIOBUTTONS,DEPARTURE,GODATE,ADULTBOX,INFANTBOX);
-        MAINLEFT.setPadding(new Insets(0,0,0,0));
+        MAINLEFT.setPadding(new Insets(0,0,0,10));
         MAINLEFT.setAlignment(Pos.CENTER_LEFT);
 
         MAINRIGHT1.getChildren().addAll(ARRIVAL,BACKDATE);
@@ -240,7 +235,7 @@ public class SearchFlight {
         PANE.setTop(PROP.Bars(MAINWINDOW, NAMEUSER));
         PANE.setCenter(MID);
         
-        ENTRANCE = new Scene(PANE,800,1400,Color.RED);
+        ENTRANCE = new Scene(PANE,600,800,Color.RED);
         ENTRANCE.getStylesheets().add("Decor.css");
     }
     public void DPickMe(){
@@ -255,22 +250,22 @@ public class SearchFlight {
         GODATE.setDayCellFactory(picker -> new DateCell(){
             @Override
             public void updateItem(LocalDate BONJOUR, boolean empty) {
-            super.updateItem(BONJOUR, empty);
-            //Today date is yellow
-            TODAY = LocalDate.now();
-            if (BONJOUR.isEqual(TODAY)) {
-                setStyle("-fx-background-color: #FFFF00");
-            }
-            //Blocks booking before today - no back in time
-            CONDI = (BONJOUR.isBefore(LocalDate.now().plusDays(1)));
-            if (CONDI){
-                setDisable(true);
-                setStyle("-fx-background-color: #d3d3d3;");
-            }else{
-                setDisable(false);
-                setStyle("-fx-background-color: #CCFFFF;");
-                setStyle("-fx-font-fill: black;");
-            }
+                super.updateItem(BONJOUR, empty);
+                //Today date is yellow
+                TODAY = LocalDate.now();
+                if (BONJOUR.isEqual(TODAY)) {
+                    setStyle("-fx-background-color: #FFFF00");
+                }
+                //Blocks booking before today - no back in time
+                CONDI = (BONJOUR.isBefore(LocalDate.now().plusDays(1)));
+                if (CONDI){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #d3d3d3;");
+                }else{
+                    setDisable(false);
+                    setStyle("-fx-background-color: #CCFFFF;");
+                    setStyle("-fx-font-fill: black;");
+                }
             }    
         });        
     }   
@@ -280,7 +275,7 @@ public class SearchFlight {
             DDAY= (int)(long)(ChronoUnit.DAYS.between(GODATE.getValue(),BACKDATE.getValue())); 
         });
         
-        BACKDATE.setMaxWidth(500);
+        BACKDATE.setMaxWidth(300);
         BACKDATE.setShowWeekNumbers(false);
         BACKDATE.setPrefHeight(40);
         BACKDATE.setPromptText("Arrival Date");        

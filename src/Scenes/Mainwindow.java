@@ -1,8 +1,6 @@
 package Scenes;
 
-import Controllers.RecordMe;
 import Controllers.UserController;
-
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -170,7 +168,7 @@ public class Mainwindow {
         PANE.setBottom(TEST);
         PANE.setBackground(new Background(PROP.BCIMG));
         
-        ENTRANCE = new Scene(PANE,800,1400,Color.RED);
+        ENTRANCE = new Scene(PANE,600,800,Color.RED);
         ENTRANCE.getStylesheets().add("Decor.css");
     }
     public Text getTITLE(){
