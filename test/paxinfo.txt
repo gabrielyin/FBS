@@ -232,3 +232,7 @@ Rio de Janeiro,Paris,2021-09-22,2021-09-29,2,Economy
 London,Paris,2021-09-28,2021-10-05,2,Economy
 Rio de Janeiro,Paris,2021-09-14,2021-09-21,2,Economy
 Rio de Janeiro,London,2021-09-29,2021-10-06,2,Economy
+Rio de Janeiro,Lisbon,2021-09-30,2021-10-07,1,Economy
+Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
+Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy
+Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy

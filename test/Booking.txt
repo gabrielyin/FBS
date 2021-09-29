@@ -27,3 +27,4 @@
 2021/09/07,216,Billy,London,Paris,2
 2021/08/25,739,Gabriel,Rio de Janeiro,Paris,2
 2021/09/27,2,Leo,Rio de Janeiro,London,2
+2021/09/29,331,Oscar,Rio de Janeiro,Lisbon,1

@@ -57,7 +57,6 @@ public class SeatMap {
         LINEFLIGHT = new LineFlight();
         LINES = new FlightController();        
         PROP = new Decorum();
-        //first hbox
         BOX1 = new HBox();
         
         FLIGHTNUM = new Text();
@@ -84,6 +83,7 @@ public class SeatMap {
             BOBOX[k].setHeight(20);
             BOBOX[k].setWidth(20);              
         } 
+        
         RECT = new Region();
         RECT.setStyle("-fx-background-color: red; -fx-border-style: solid; -fx-border-width: 1; -fx-border-color: black; -fx-min-width: 20; -fx-min-height:20; -fx-max-width:20; -fx-max-height: 20;");        
         BOBOX[0].setFill(Color.AQUA);
@@ -108,7 +108,7 @@ public class SeatMap {
         ALLOCATION1 = new Integer[5][5];
         VBOX1 = new VBox(8);
         
-        for (int k = 0;k<5;k++){
+        for (int k = 0; k<5; k++){
             SEATMAP1[k] = new HBox(8);
             for(int j = 0;j<4;j++){
                 SEATS1[k][j] = new Rectangle();
@@ -143,7 +143,7 @@ public class SeatMap {
         
         SEATMAP2 = new HBox[5];
         SEATS2 = new Rectangle[5][9];
-        ALLOCATION2 = new Integer[5][9];        
+        ALLOCATION2 = new Integer[5][9];    
         VBOX2 = new VBox(8);
         
         for (int k = 0;k<5;k++){
