@@ -53,7 +53,7 @@ public class SeatMap {
     FlightController LINES;
     LineFlight LINEFLIGHT;  
     
-    public SeatMap(Stage MAINWINDOW, String USER, Integer i, String GOCITY, String BACKCITY) throws IOException{
+    public SeatMap(Stage MAINWINDOW, String USER, Integer index, String GOCITY, String BACKCITY) throws IOException{
         LINEFLIGHT = new LineFlight();
         LINES = new FlightController();        
         PROP = new Decorum();
@@ -61,15 +61,15 @@ public class SeatMap {
         BOX1 = new HBox();
         
         FLIGHTNUM = new Text();
-        FLIGHTNUM.setText(LINES.getStructure().get(i).getFlightN2());
+        FLIGHTNUM.setText(LINES.getStructure().get(index).getFlightN2());
         FLIGHTNUM.setStyle("-fx-font: 18 arial;");
         
         FLIGHT = new Text();
-        FLIGHT.setText(LINES.getStructure().get(i).getFlightItself());
+        FLIGHT.setText(LINES.getStructure().get(index).getFlightItself());
         FLIGHT.setStyle("-fx-font: 18 arial;");
         
         PLANE = new Text();
-        PLANE.setText(LINES.getStructure().get(i).getFlightN1());
+        PLANE.setText(LINES.getStructure().get(index).getFlightN1());
         PLANE.setStyle("-fx-font: 18 arial;");
         
         BOX1.setAlignment(Pos.TOP_CENTER);
@@ -101,10 +101,23 @@ public class SeatMap {
         
         // Seat map
         VBOX1 = new VBox();
+        Rectangle[][] rectA = new Rectangle[4][4];
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                Rectangle rect = new Rectangle();
+                rect.setHeight(20);
+                rect.setWidth(20);
+                rect.setId("A" + (i+1+(j*4)));
+                rect.setFill(Color.AQUA);
+                rectA[i][j] = rect;
+            }
+        }
                 
         VBOX2 = new VBox();
+        Rectangle[][] rectB = new Rectangle[5][5];
                 
         VBOX3 = new VBox();
+        Rectangle[][] rectC = new Rectangle[7][10];
         
         BOX3 = new HBox();
         
@@ -146,7 +159,7 @@ public class SeatMap {
                         STYLESEAT = "Economy";                
                     }
             try {
-                PASSENGER = new Passengers(MAINWINDOW, USER, i, SUM1,SUM0,
+                PASSENGER = new Passengers(MAINWINDOW, USER, index, SUM1,SUM0,
                         FLIGHTNUM, GOCITY, BACKCITY,STYLESEAT);
             } catch (IOException ex) {
                 Logger.getLogger(SeatMap.class.getName()).log(Level.SEVERE, null, ex);
