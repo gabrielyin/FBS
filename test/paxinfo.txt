@@ -240,3 +240,14 @@ Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
 Rio de Janeiro,Paris,2021-09-30,2021-10-08,2,Economy
 Rio de Janeiro,Lisbon,2021-09-30,2021-10-08,2,Economy
 Rio de Janeiro,Paris,2021-09-30,2021-10-07,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-09,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-09,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Lisbon,Rio de Janeiro,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-08,2021-10-15,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy Plus
+Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy

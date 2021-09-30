@@ -32,7 +32,7 @@ public class SeatMap {
     BackgroundImage BG;
     Scene ENTRANCE;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX11,BOX2,BOX3,INPLANE, HBOX1;
+    HBox MENUBAR1,BOX1,BOX11,BOX2,BOX3,INPLANE,HBOX;
     HBox[] SEATMAP1,SEATMAP2,SEATMAP3;
     VBox CONTAINER,VBOX1,VBOX2,VBOX3;
     MyAccount MYACCOUNT;
@@ -86,11 +86,11 @@ public class SeatMap {
         } 
         RECT = new Region();
         RECT.setStyle("-fx-background-color: red; -fx-border-style: solid; -fx-border-width: 1; -fx-border-color: black; -fx-min-width: 20; -fx-min-height:20; -fx-max-width:20; -fx-max-height: 20;");        
-        BOBOX[0].setFill(Color.AQUA);
+        BOBOX[0].setFill(Color.GOLD);
         BUSINESS = new Label(" Business   ",BOBOX[0]);
-        BOBOX[1].setFill(Color.BURLYWOOD);         
+        BOBOX[1].setFill(Color.SILVER);         
         ECONOMYPLUS = new Label(" Economy Plus   ",BOBOX[1]);
-        BOBOX[2].setFill(Color.GOLD);         
+        BOBOX[2].setFill(Color.BURLYWOOD);         
         ECONOMY = new Label(" Economy   ",BOBOX[2]);
         OCCUPIED = new Label(" Occupied   ",RECT);
 
@@ -99,35 +99,77 @@ public class SeatMap {
         BOX2.setPadding(new Insets(10,0,10,0));
         BOX2.getChildren().addAll(BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED);
         
-        // Seat map
-        VBOX1 = new VBox();
-        HBOX1 = new HBox();
+        // Seat map A
+        VBOX1 = new VBox(4);
         Rectangle[][] rectA = new Rectangle[4][4];
         for (int i = 0; i < 4; i++) {
+            HBOX = new HBox(4);
             for (int j = 0; j < 4; j++) {
-                Rectangle rect = new Rectangle();
-                rect.setHeight(25);
-                rect.setWidth(25);
-                rect.setId("A" + (i+1+(j*4)));
-                rect.setFill(Color.AQUA);
-                rect.setOnMouseClicked((MouseEvent e) -> {
-                    rect.setFill(Color.BLACK);
+                rectA[i][j] = new Rectangle();
+                rectA[i][j].setHeight(25);
+                rectA[i][j].setWidth(25);
+                rectA[i][j].setId("A" + (j+1+(i*4)));
+                rectA[i][j].setFill(Color.GOLD);
+                
+                int I = i;
+                int J = j;
+                rectA[i][j].setOnMouseClicked((MouseEvent e) -> {
+                    rectA[I][J].setFill(Color.BLACK);
+                    System.out.println(rectA[I][J].getId());
                 });
-                rectA[i][j] = rect;
-                HBOX1.getChildren().add(rectA[i][j]);
+                HBOX.getChildren().add(rectA[i][j]);
             }
-            VBOX1.getChildren().add(HBOX1);
+            VBOX1.setPadding(new Insets(4,0,0,0));
+            VBOX1.getChildren().add(HBOX);
         }
         
-                
-        VBOX2 = new VBox();
+        // Seat map B
+        VBOX2 = new VBox(3.2);
         Rectangle[][] rectB = new Rectangle[5][5];
+        for (int i = 0; i < 5; i++) {
+            HBOX = new HBox(3.2);
+            for (int j = 0; j < 5; j++) {
+                rectB[i][j] = new Rectangle();
+                rectB[i][j].setHeight(20);
+                rectB[i][j].setWidth(20);
+                rectB[i][j].setId("B" + (j+1+(i*5)));
+                rectB[i][j].setFill(Color.SILVER);
                 
-        VBOX3 = new VBox();
+                int I = i;
+                int J = j;
+                rectB[i][j].setOnMouseClicked((MouseEvent e) -> {
+                    rectB[I][J].setFill(Color.BLACK);
+                });
+                HBOX.getChildren().add(rectB[i][j]);
+            }
+            VBOX2.setPadding(new Insets(3.2,0,0,0));
+            VBOX2.getChildren().add(HBOX);
+        }
+        
+        // Seat map C
+        VBOX3 = new VBox(2.28);
         Rectangle[][] rectC = new Rectangle[7][10];
-        
+        for (int i = 0; i < 7; i++) {
+            HBOX = new HBox(2.28);
+            for (int j = 0; j < 10; j++) {
+                rectC[i][j] = new Rectangle();
+                rectC[i][j].setHeight(14.28);
+                rectC[i][j].setWidth(14.28);
+                rectC[i][j].setId("C" + (j+1+(i*7)));
+                rectC[i][j].setFill(Color.BURLYWOOD);
+                
+                int I = i;
+                int J = j;
+                rectC[i][j].setOnMouseClicked((MouseEvent e) -> {
+                    rectC[I][J].setFill(Color.BLACK);
+                });
+                HBOX.getChildren().add(rectC[i][j]);
+            }
+            VBOX3.setPadding(new Insets(2.28,0,0,0));
+            VBOX3.getChildren().add(HBOX);
+        }
+                    
         BOX3 = new HBox();
-        
         CONTINUE = new Button("Continue");
         CONTINUE.setOnAction(e->{
             SUM1 = 0;
