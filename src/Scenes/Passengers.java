@@ -57,7 +57,7 @@ public class Passengers {
     BookingController BOOKINGCONTROLLER;
     Decorum PROP;
     
-    public Passengers(Stage MAINWINDOW,String USER,Integer index, Integer ALLOCATION1,
+    public Passengers(Stage MAINWINDOW,String USER,Integer index,
             Integer SUM1, Text FLIGHTNUM, String GOCITY,String BACKCITY, String STYLESEAT) throws IOException{
         PROP = new Decorum();
         BOOKINGCONTROLLER = new BookingController();

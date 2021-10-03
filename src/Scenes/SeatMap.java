@@ -172,44 +172,27 @@ public class SeatMap {
         BOX3 = new HBox();
         CONTINUE = new Button("Continue");
         CONTINUE.setOnAction(e->{
-            SUM1 = 0;
-            for (int k = 0;k<5;k++){
-                for(int j = 0;j<4;j++){            
-                    if(SEATS1[k][j].getFill().equals(Color.BLACK)){
-                        SUM1 = SUM1 +1;
-                    };                
+            int totalPassengers = 0;
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (rectA[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
                 }
-            } 
-            SUM2 = 0;
-            for (int k = 0;k<5;k++){
-                for(int j = 0;j<8;j++){            
-                    if(SEATS2[k][j].getFill().equals(Color.BLACK)){
-                        SUM2 = SUM2 +1;
-                    };                
-                }
-            }         
-            SUM3 = 0;
-            for (int k = 0;k<5;k++){
-                for(int j = 0;j<10;j++){            
-                    if(SEATS3[k][j].getFill().equals(Color.BLACK)){
-                        SUM3 = SUM3 +1;
-                    };                
-                }
-            }            
-            SUM0 = SUM1+SUM2+SUM3;
-            SUMX = Math.max(Math.max(SUM1,SUM2),SUM3);
-            if (SUMX==SUM1){
-                STYLESEAT = "Business";
             }
-            else    if (SUMX==SUM2){
-                        STYLESEAT = "Economy plus";                
-                    }
-                    else{
-                        STYLESEAT = "Economy";                
-                    }
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if (rectB[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
+                }
+            }
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (rectC[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
+                }
+            }
+
+            STYLESEAT = "Economy";
             try {
-                PASSENGER = new Passengers(MAINWINDOW, USER, index, SUM1,SUM0,
-                        FLIGHTNUM, GOCITY, BACKCITY,STYLESEAT);
+                PASSENGER = new Passengers(MAINWINDOW, USER, index, totalPassengers,FLIGHTNUM, GOCITY, BACKCITY,STYLESEAT);
             } catch (IOException ex) {
                 Logger.getLogger(SeatMap.class.getName()).log(Level.SEVERE, null, ex);
             }

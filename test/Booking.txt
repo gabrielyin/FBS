@@ -28,3 +28,4 @@
 2021/08/25,739,Gabriel,Rio de Janeiro,Paris,2
 2021/09/27,2,Leo,Rio de Janeiro,London,2
 2021/09/29,331,Oscar,Rio de Janeiro,Lisbon,1
+2021/10/03,633,1,Rio de Janeiro,Lisbon,2

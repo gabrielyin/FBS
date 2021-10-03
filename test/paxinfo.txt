@@ -251,3 +251,5 @@ Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
 Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
 Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy Plus
 Rio de Janeiro,Paris,2021-10-01,2021-10-08,2,Economy
+Rio de Janeiro,Paris,2021-10-04,2021-10-11,2,Economy
+Rio de Janeiro,Lisbon,2021-10-04,2021-10-12,2,Economy
