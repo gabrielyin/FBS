@@ -25,7 +25,13 @@ public class BookingController {
 
             while(file.hasNext()){
                 String[] data = file.nextLine().split(",");
-                booking = new Booking(data[0],Integer.parseInt(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]));
+
+                String[] seats = new String[data[6].split("x").length];
+                for (int i = 0; i < data[6].split("x").length; i++) {
+                    seats[i] = data[6].split("x")[i];
+                }
+
+                booking = new Booking(data[0],Integer.parseInt(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]),seats, data[7]);
                 bookings.add(booking);
             }
 
@@ -46,7 +52,13 @@ public class BookingController {
             while(file.hasNext()){
                 String[] data = file.nextLine().split(",");
                 if(data[CHECK].equals(TFIELD)){
-                    booking = new Booking(data[0],Integer.parseInt(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]));
+
+                    String[] seats = new String[data[6].split("x").length];
+                    for (int i = 0; i < data[6].split("x").length; i++) {
+                        seats[i] = data[6].split("x")[i];
+                    }
+
+                    booking = new Booking(data[0],Integer.parseInt(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]),seats, data[7]);
                     bookings.add(booking);
                 }
             }
@@ -60,13 +72,19 @@ public class BookingController {
         return bookings;
     }    
     
-    public void create(String DATE, int RESERVATION, String NAME, String ORIGIN, String DEST, int PAX){
+    public void create(String DATE, int RESERVATION, String NAME, String ORIGIN, String DEST, int PAX, String seatsStream, String flightNumber){
         try {
             System.out.println("HELLO");
             FileWriter fileWriter = new FileWriter("test/Booking.txt", true);
-            fileWriter.write(DATE + "," + RESERVATION + "," + NAME + "," + ORIGIN + "," + DEST + "," + PAX);
+            fileWriter.write(DATE + "," + RESERVATION + "," + NAME + "," + ORIGIN + "," + DEST + "," + PAX + "," + seatsStream + "," + flightNumber);
             fileWriter.write(System.lineSeparator());
-            booking = new Booking(DATE, RESERVATION, NAME, ORIGIN, DEST, PAX);
+
+            String[] seats = new String[seatsStream.split("x").length];
+            for (int i = 0; i < seatsStream.split("x").length; i++) {
+                seats[i] = seatsStream.split("x")[i];
+            }
+
+            booking = new Booking(DATE, RESERVATION, NAME, ORIGIN, DEST, PAX, seats, flightNumber);
             bookings.add(booking);
             
             fileWriter.close();

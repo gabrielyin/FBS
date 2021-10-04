@@ -49,7 +49,7 @@ public class GetRecordRight {
                 Logger.getLogger(GetRecordRight.class.getName()).log(Level.SEVERE, null, ex);
             }
                 BOOKINGCONTROLLER.create(DATE.getText(), Integer.parseInt(RESERVATION.getText()), NAME.getText(),
-                        ORIGIN.getText(), DESTINATION.getText(), Integer.parseInt(PAX.getText()));            
+                        ORIGIN.getText(), DESTINATION.getText(), Integer.parseInt(PAX.getText()), "", "");
         });         
         
         BACK = new Button("BACK");

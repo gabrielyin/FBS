@@ -1,5 +1,6 @@
 package Scenes;
 
+import Controllers.BookingController;
 import Controllers.FlightController;
 import Modules.LineFlight;
 import java.io.IOException;
@@ -28,29 +29,23 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SeatMap {
-    Image IMG;
+
     BackgroundImage BG;
     Scene ENTRANCE;
     BorderPane PANE;
-    HBox MENUBAR1,BOX1,BOX11,BOX2,BOX3,INPLANE,HBOX;
-    HBox[] SEATMAP1,SEATMAP2,SEATMAP3;
+    HBox BOX1,BOX2,BOX3,INPLANE,HBOX;
     VBox CONTAINER,VBOX1,VBOX2,VBOX3;
-    MyAccount MYACCOUNT;
-    Button MENU1,MENU2,MENU3,CONTINUE;
+    Button CONTINUE;
     Text FLIGHTNUM,FLIGHT,PLANE;
     Label BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED;
     Passengers PASSENGER;
     Region RECT;
     Rectangle[] BOBOX;
-    Rectangle[][] SEATS1,SEATS2,SEATS3;
-    Integer[][] ALLOCATION1,ALLOCATION2,ALLOCATION3;
-    Integer SUM0, SUM1, SUM2, SUM3,SUMX;
-    StackPane STACK;
     String STYLESEAT;
-    final int INDEX = 0;
     
     Decorum PROP;
     FlightController LINES;
+
     LineFlight LINEFLIGHT;  
     
     public SeatMap(Stage MAINWINDOW, String USER, Integer index, String GOCITY, String BACKCITY) throws IOException{
@@ -100,6 +95,7 @@ public class SeatMap {
         BOX2.getChildren().addAll(BUSINESS,ECONOMYPLUS,ECONOMY,OCCUPIED);
         
         // Seat map A
+        BookingController bookingController = new BookingController();
         VBOX1 = new VBox(4);
         Rectangle[][] rectA = new Rectangle[4][4];
         for (int i = 0; i < 4; i++) {
@@ -110,7 +106,17 @@ public class SeatMap {
                 rectA[i][j].setWidth(25);
                 rectA[i][j].setId("A" + (j+1+(i*4)));
                 rectA[i][j].setFill(Color.GOLD);
-                
+
+                for (int k = 0; k < bookingController.read().size(); k++) {
+                    if (bookingController.read().get(k).getFlightNumber().equals(FLIGHTNUM.getText())) {
+                        for (int l = 0; l < bookingController.read().get(k).getSeats().length; l++) {
+                            if (rectA[i][j].getId().equals(bookingController.read().get(k).getSeats()[l])) {
+                                rectA[i][j].setFill(Color.RED);
+                            }
+                        }
+                    }
+                }
+
                 int I = i;
                 int J = j;
                 rectA[i][j].setOnMouseClicked((MouseEvent e) -> {
@@ -134,6 +140,16 @@ public class SeatMap {
                 rectB[i][j].setWidth(20);
                 rectB[i][j].setId("B" + (j+1+(i*5)));
                 rectB[i][j].setFill(Color.SILVER);
+
+                for (int k = 0; k < bookingController.read().size(); k++) {
+                    if (bookingController.read().get(k).getFlightNumber().equals(FLIGHTNUM.getText())) {
+                        for (int l = 0; l < bookingController.read().get(k).getSeats().length; l++) {
+                            if (rectB[i][j].getId().equals(bookingController.read().get(k).getSeats()[l])) {
+                                rectB[i][j].setFill(Color.RED);
+                            }
+                        }
+                    }
+                }
                 
                 int I = i;
                 int J = j;
@@ -157,6 +173,16 @@ public class SeatMap {
                 rectC[i][j].setWidth(14.28);
                 rectC[i][j].setId("C" + (j+1+(i*7)));
                 rectC[i][j].setFill(Color.BURLYWOOD);
+
+                for (int k = 0; k < bookingController.read().size(); k++) {
+                    if (bookingController.read().get(k).getFlightNumber().equals(FLIGHTNUM.getText())) {
+                        for (int l = 0; l < bookingController.read().get(k).getSeats().length; l++) {
+                            if (rectC[i][j].getId().equals(bookingController.read().get(k).getSeats()[l])) {
+                                rectC[i][j].setFill(Color.RED);
+                            }
+                        }
+                    }
+                }
                 
                 int I = i;
                 int J = j;
@@ -173,26 +199,36 @@ public class SeatMap {
         CONTINUE = new Button("Continue");
         CONTINUE.setOnAction(e->{
             int totalPassengers = 0;
+            String seats = "";
 
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    if (rectA[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
+                    if (rectA[i][j].getFill().equals(Color.BLACK)){
+                        totalPassengers++;
+                        seats = seats + rectA[i][j].getId() + "x";
+                    }
                 }
             }
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 5; j++) {
-                    if (rectB[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
+                    if (rectB[i][j].getFill().equals(Color.BLACK)){
+                        totalPassengers++;
+                        seats = seats + rectB[i][j].getId() + "x";
+                    }
                 }
             }
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (rectC[i][j].getFill().equals(Color.BLACK)) totalPassengers++;
+                    if (rectC[i][j].getFill().equals(Color.BLACK)){
+                        totalPassengers++;
+                        seats = seats + rectC[i][j].getId() + "x";
+                    }
                 }
             }
 
             STYLESEAT = "Economy";
             try {
-                PASSENGER = new Passengers(MAINWINDOW, USER, index, totalPassengers,FLIGHTNUM, GOCITY, BACKCITY,STYLESEAT);
+                PASSENGER = new Passengers(MAINWINDOW, USER, totalPassengers, seats, FLIGHTNUM, GOCITY, BACKCITY,STYLESEAT);
             } catch (IOException ex) {
                 Logger.getLogger(SeatMap.class.getName()).log(Level.SEVERE, null, ex);
             }

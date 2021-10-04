@@ -7,14 +7,34 @@ public class Booking {
     private String ORIGIN;
     private String DEST;
     private int PAX;
+    private String[] seats;
+    private String flightNumber;
 
-    public Booking(String date, int reservation, String name, String origin, String dest, int pax) {
+    public Booking(String date, int reservation, String name, String origin, String dest, int pax, String[] seats, String flightNumber) {
         this.DATE = date;
         this.RESERVATION = reservation;
         this.NAME = name;
         this.ORIGIN = origin;
         this.DEST = dest;
         this.PAX = pax;
+        this.seats = seats;
+        this.flightNumber = flightNumber;
+    }
+
+    public String[] getSeats() {
+        return seats;
+    }
+
+    public void setSeats(String[] seats) {
+        this.seats = seats;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public String getDate() {

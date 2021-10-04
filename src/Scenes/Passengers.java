@@ -31,34 +31,28 @@ public class Passengers {
     Scene ENTRANCE;
     BorderPane PANE;
     Button CONTINUE;
-    SearchFlight HOME;
-    MyAccount MYACCOUNT;
     VBox MAINBOX;
-    HBox BOX1,BOX2,BOTTOM;
+    HBox BOTTOM;
     HBox[] BOXARRAY;
     TextField[] PASSPORTNO,NAME,SURNAME;
     ComboBox[] GENDER,BAGS;
     FlightSummary FLIGHTSUMMARY;
-    Integer PAXNUM, SUMBAGS;
+    Integer SUMBAGS;
     FileReader PAXINFO;
     String MYBOOK;
-    BufferedReader BUFFEREDREADER;
     String[] FILEDATA;
-    Pax PAX;
-    SearchFlight MYNEWCLASS;
+
     private Scanner FILE;
     int RESERVATION;
     Random RANDOMM;
 
-    FlightResults FLIGHTRESULTS;
     FlightController LINES;
     DateTimeFormatter DTF2;
     LocalDateTime NOW2;
     BookingController BOOKINGCONTROLLER;
     Decorum PROP;
     
-    public Passengers(Stage MAINWINDOW,String USER,Integer index,
-            Integer SUM1, Text FLIGHTNUM, String GOCITY,String BACKCITY, String STYLESEAT) throws IOException{
+    public Passengers(Stage MAINWINDOW, String USER, int totalPassengers, String seats, Text FLIGHTNUM, String GOCITY, String BACKCITY, String STYLESEAT) throws IOException{
         PROP = new Decorum();
         BOOKINGCONTROLLER = new BookingController();
          
@@ -67,7 +61,7 @@ public class Passengers {
         LINES = new FlightController(); 
         SUMBAGS= 0;
         
-        CountBags(SUM1);
+        CountBags(totalPassengers);
       
         //bottom part of scene
         RANDOMM = new Random();
@@ -80,13 +74,13 @@ public class Passengers {
         }
         RESERVATION = Integer.parseInt(MYBOOK);
             try {
-                FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, USER, SUM1, GOCITY, BACKCITY,CountBags(SUM1),STYLESEAT);
+                FLIGHTSUMMARY = new FlightSummary(MAINWINDOW, USER, totalPassengers, GOCITY, BACKCITY,CountBags(totalPassengers),STYLESEAT);
             } catch (IOException ex) {
                 Logger.getLogger(Passengers.class.getName()).log(Level.SEVERE, null, ex);
             }
             DTF2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
             NOW2 = LocalDateTime.now();
-            BOOKINGCONTROLLER.create(DTF2.format(NOW2), RESERVATION, USER, GOCITY, BACKCITY, readStuff());
+            BOOKINGCONTROLLER.create(DTF2.format(NOW2), RESERVATION, USER, GOCITY, BACKCITY, readStuff(), seats, FLIGHTNUM.getText());
             MAINWINDOW.setScene(FLIGHTSUMMARY.getScreen());
         });
         
